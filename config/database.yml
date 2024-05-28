@@ -1,0 +1,37 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("DB_POOL") { 5 } %>
+  # sql queries will be killed after 60s
+  # we should reduce this number
+  # A bigger timeout can be set for jobs
+  variables:
+    statement_timeout: <%= ENV['PG_STATEMENT_TIMEOUT'] || 60000 %>
+
+development:
+  <<: *default
+  database: <%= ENV["DB_DATABASE"] %>
+  host: <%= ENV["DB_HOST"] %>
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  port: <%= ENV["DB_PORT"] || 5432 %>
+  # Workaround for https://github.com/ged/ruby-pg/issues/311
+  gssencmode: disable
+
+test:
+  <<: *default
+  database: tps_test
+  host: localhost
+  username: tps_test
+  password: tps_test
+  port: <%= ENV["DB_PORT"] || 5432 %>
+  # Workaround for https://github.com/ged/ruby-pg/issues/311
+  gssencmode: disable
+
+production: &production
+  <<: *default
+  database: <%= ENV["DB_DATABASE"] %>
+  host: <%= ENV["DB_HOST"] %>
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  port: <%= ENV["DB_PORT"] || 5432 %>

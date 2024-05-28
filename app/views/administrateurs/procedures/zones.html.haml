@@ -1,0 +1,31 @@
+- content_for(:root_class, 'scroll-margins-for-sticky-footer')
+
+= render partial: 'administrateurs/breadcrumbs',
+  locals: { steps: [['Démarches', admin_procedures_back_path(@procedure)],
+                    [@procedure.libelle.truncate_words(10), admin_procedure_path(@procedure)],
+                    ['Description']] }
+.container
+  = form_for @procedure,
+    url: url_for({ controller: 'administrateurs/procedures', action: :update, id: @procedure.id }),
+    html: { multipart: true } do |f|
+
+    %h1.page-title Zones
+
+    - if Rails.application.config.ds_zonage_enabled
+      %fieldset.fr-fieldset{ aria: { labelledby: "zones-legend"} }
+        %legend#zones-legend.fr-fieldset__legend--regular.fr-fieldset__legend= t('zone', scope: 'activerecord.attributes.procedure')
+        = f.collection_check_boxes :zone_ids, current_administrateur.default_zones, :id, :current_label do |b|
+          .fr-fieldset__element
+            .fr-checkbox-group
+              = b.check_box
+              = b.label class: "fr-label font-weight-bold"
+        = f.collection_check_boxes :zone_ids, Zone.available_at(@procedure.published_or_created_at, current_administrateur.default_zones), :id, :label do |b|
+          .fr-fieldset__element
+            .fr-checkbox-group
+              = b.check_box
+              = b.label class: "fr-label"
+
+    .procedure-form__actions.sticky--bottom
+      .actions-right
+        = link_to 'Annuler', admin_procedure_path(id: @procedure), class: 'fr-btn fr-btn--tertiary fr-mr-2w', data: { confirm: 'Êtes-vous sûr de vouloir annuler les modifications effectuées ?'}
+        = f.button 'Enregistrer', class: 'fr-btn fr-btn--primary'

@@ -1,0 +1,37 @@
+
+fr:
+  layouts:
+    mailers:
+      service_footer:
+        do_not_reply: Merci de ne pas répondre à cet email.
+        contact_admin: Pour vous adresser à votre administration, passez directement par la
+        file_messagerie: messagerie du dossier
+        procedure_management: "Cette démarche est gérée par :"
+        ask_question: "Poser une question sur votre dossier :"
+        email_sent_to: "Cet email a été envoyé à l'adresse :"
+        by_messagerie: Par la messagerie
+        by_email: "Par email :"
+        by_phone: "Par téléphone :"
+        schedule: "Horaires :"
+      signature:
+        team: "L’équipe"
+      for_tiers:
+        good_morning: Bonjour,
+        first_part: Nous vous informons que le dossier nº %{dossier_id}, rempli en votre nom par %{mandataire_first_name} %{mandataire_last_name}, sur la démarche
+        second_part: Pour en savoir plus, veuillez vous rapprocher de
+        en_construction: a été déposé le %{processed_at}.
+        en_instruction: a bien été reçu et pris en charge le %{processed_at}. Il va maintenant être examiné par le service.
+        repasser_en_instruction: va être réexaminé, la précédente décision sur ce dossier est caduque.
+        accepte: a été accepté le %{processed_at}.
+        refuse: a été refusé le %{processed_at}.
+        sans_suite: a été classé sans suite le %{processed_at}.
+        accuse_lecture: a été traité le %{processed_at}.
+      accuse_lecture:
+        good_morning: Bonjour,
+        first_part: Nous vous informons qu'une décision sur le dossier nº %{dossier_id} de la démarche
+        second_part: a été rendue.
+        third_part: Pour en connaitre la nature, veuillez vous connecter à votre compte
+        commentaire_html: <p>Bonjour,</p><p>Nous vous informons qu'une décision sur votre dossier a été rendue.</p>Cordialement,<br>%{service}
+
+      commentaire_groupe_gestionnaire_footer:
+        do_not_reply_html: Merci de ne pas répondre à cet email. Consultez votre message sur %{application_name} ou contactez votre expéditeur par <a href="mailto:%{sender_email}">mail</a>

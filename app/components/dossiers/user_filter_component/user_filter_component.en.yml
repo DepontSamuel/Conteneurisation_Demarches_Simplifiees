@@ -1,0 +1,18 @@
+en:
+  legend:
+    state: States
+    created_at: Created since
+    depose_at: Submitted since
+  button:
+    apply_filters: Apply filters
+    cancel_filters: Cancel
+    select_filters: Select a filter
+  tag:
+    active_filters:
+      one: "1 active filter"
+      other: "%{count} active filters"
+    active_filters_link_title:
+      one: Remove the active filter
+      other: "Remove the %{count} active filters"
+  states:
+    prompt: Select a state

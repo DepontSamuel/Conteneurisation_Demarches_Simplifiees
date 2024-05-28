@@ -1,0 +1,56 @@
+@import "colors";
+@import "constants";
+
+.attachment-error,
+.attachment-upload-error {
+  position: relative;
+
+  &::before {
+    box-shadow: inset 2px 0 0 0 var(--border-plain-error);
+    height: 100%;
+    content: "";
+    left: -0.75rem;
+    position: absolute;
+    width: 2px;
+  }
+
+  .attachment-filename {
+    color: var(--text-default-error);
+  }
+}
+
+.attachment-error {
+  .fr-error-text {
+    margin-top: 0.5rem;
+  }
+}
+
+.attachment-multiple:not(.fr-downloads-group),
+.attachment-multiple.fr-downloads-group[data-controller=replace-attachment] {
+  ul {
+    list-style-type: none;
+    padding-inline-start: 0;
+  }
+
+  li {
+    padding-bottom: 0;
+  }
+}
+
+.attachment {
+  // Anti-virus badge for just uploaded attachment when seen as downloadable
+  .fr-download + .fr-badge {
+    position: relative;
+    top: -1rem;
+  }
+
+  .fr-btn {
+    align-self: flex-start;
+  }
+}
+
+.attachment-multiple.fr-downloads-group.destroyable ul,
+ul[data-file-input-reset-target='fileList'] {
+  list-style-type: none;
+  padding-inline-start: 0;
+}

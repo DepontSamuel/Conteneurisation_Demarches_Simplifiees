@@ -1,0 +1,21 @@
+fr:
+  layers:
+    cadastres: Cadastres
+    unesco: UNESCO
+    arretes_protection: Arrêtés de protection
+    conservatoire_littoral: Conservatoire du Littoral
+    reserves_chasse_faune_sauvage: Réserves nationales de chasse et de faune sauvage
+    reserves_biologiques: Réserves biologiques
+    reserves_naturelles: Réserves naturelles
+    natura_2000: Natura 2000
+    zones_humides: Zones humides d’importance internationale
+    znieff: ZNIEFF
+  character_limit:
+    unlimited: Pas de limite de caractères
+    limit: Limité à %{limit} caractères
+  expression_reguliere:
+    labels:
+      regex: Saisissez votre expression régulière, essayez-la sur https://rubular.com. 
+      hint: "Pensez aux ancres de début (^) et fin ($) : `12 km serait accepté par /[[:digit:]]+/ mais rejeté par /^[[:digit:]]+$/"
+      valid_exemple: Exemple valide qui passe l'expression régulière
+      error_message: Message d'erreur à afficher à l'usager en cas de saisie invalide

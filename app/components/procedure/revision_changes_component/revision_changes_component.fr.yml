@@ -1,0 +1,82 @@
+---
+fr:
+  no_changes: Aucune modification
+  breaking_change:
+    one: "Les modifications apportées ne s'appliqueront pas au dossier déjà déposé."
+    other: "Les modifications apportées ne s'appliqueront pas aux %{count} dossiers déjà déposés."
+  delete_champ_html:
+    one: "Un dossier en cours de traitement porte ce champ. Les données associées à ce champ seront supprimées."
+    other: "%{count} dossiers en cours de traitement portent ce champ. Les <strong>données</strong> associées avec ce champ seront <strong>supprimées</strong>."
+  add_option: "ajoutés : %{items}"
+  remove_option: "supprimés : %{items}"
+  invalid_routing_rules_alert: "Certains groupes d'instructeurs ont une règle de routage invalide. Veuillez mettre à jour la configuration des groupes d'instructeurs après avoir publié les modifications."
+  public:
+    add: Le champ « %{label} » a été ajouté.
+    add_mandatory: Le champ obligatoire « %{label} » a été ajouté.
+    remove: Le champ « %{label} » a été supprimé.
+    move:
+      one: La position d’un champ a été modifiée.
+      other: Les positions de %{count} champs ont été modifiées.
+    update_libelle: Le libellé du champ « %{label} » a été modifié. Le nouveau libellé est « %{to} ».
+    update_description: La description du champ « %{label} » a été modifiée. La nouvelle description est « %{to} ».
+    remove_description: La description du champ « %{label} » a été supprimée.
+    update_drop_down_secondary_libelle: Le libellé secondaire du champ « %{label} » a été modifié. Le nouveau libellé est « %{to} ».
+    update_drop_down_secondary_description: La description secondaire du champ « %{label} » a été modifiée. La nouvelle description est « %{to} ».
+    update_type_champ: Le type du champ « %{label} » a été modifié. Il est maintenant de type « %{to} ».
+    update_piece_justificative_template: Le modèle de pièce justificative du champ « %{label} » a été modifié.
+    update_notice_explicative: La notice explicative du champ « %{label} » a été modifiée.
+    update_drop_down_options: "Les options de sélection du champ « %{label} » ont été modifiées :"
+    update_drop_down_options_alert: "Le champ « %{label} » est utilisé pour le routage des dossiers. Veuillez mettre à jour la configuration des groupes d'instructeurs après avoir publié les modifications."
+    enable_mandatory: Le champ « %{label} » est maintenant obligatoire.
+    disable_mandatory: Le champ « %{label} » n’est plus obligatoire.
+    enable_drop_down_other: Le champ « %{label} » comporte maintenant un choix « Autre ».
+    disable_drop_down_other: Le champ « %{label} » ne comporte plus de choix « Autre ».
+    update_carte_layers: "Les référentiels cartographiques du champ « %{label} » ont été modifiés :"
+    enable_update_collapsible_explanation: Le texte complémentaire affichable au clic du champ « %{label} » a été ajouté.
+    disable_update_collapsible_explanation: Le texte complémentaire affichable au clic du champ « %{label} » a été supprimé.
+    update_collapsible_explanation_text: Le texte complémentaire affichable au clic du champ « %{label} » a été modifié. Le nouveau texte est « %{to} ».
+    remove_collapsible_explanation_text: Le texte complémentaire affichable au clic du champ « %{label} » a été supprimé.
+    add_condition: Une condition a été ajoutée sur le champ « %{label} ». La nouvelle condition est « %{to} ».
+    remove_condition: La condition du champ « %{label} » a été supprimée.
+    update_condition: La condition du champ « %{label} » a été modifiée. La nouvelle condition est « %{to} ».
+    update_character_limit: La limite de caractères du champ texte « %{label} » a été modifiée. La nouvelle limite est « %{to} ».
+    remove_character_limit: La limite de caractères du champ texte « %{label} » a été supprimée.
+    remove_expression_reguliere: L’expression régulière du champ « %{label} » a été supprimée.
+    update_expression_reguliere: L’expression régulière du champ « %{label} » a été modifiée. La nouvelle expression est « %{to} ».
+    remove_expression_reguliere_exemple_text: L’exemple d’expression régulière du champ « %{label} » a été supprimé.
+    update_expression_reguliere_exemple_text: L’exemple d’expression régulière du champ « %{label} » a été modifié. Le nouvel exemple est « %{to} ».
+    remove_expression_reguliere_error_message: Le message d’erreur de l’expression régulière du champ « %{label} » a été supprimé.
+    update_expression_reguliere_error_message: Le message d’erreur de l’expression régulière du champ « %{label} » a été modifié. Le nouveau message est « %{to} ».
+  private:
+    add: L’annotation privée « %{label} » a été ajoutée.
+    remove: L’annotation privée « %{label} » a été supprimée.
+    move:
+      one: La position d’une annotation privée a été modifiée.
+      other: Les positions de %{count} annotations privées ont été modifiées.
+    update_libelle: Le libellé de l’annotation privée « %{label} » a été modifié. Le nouveau libellé est « %{to} ».
+    update_description: La description de l’annotation privée « %{label} » a été modifiée. La nouvelle description est « %{to} ».
+    remove_description: La description de l’annotation privée « %{label} » a été supprimée.
+    update_drop_down_secondary_libelle: Le libellé secondaire de l’annotation privée « %{label} » a été modifié. Le nouveau libellé est « %{to} ».
+    update_drop_down_secondary_description: La description secondaire de l’annotation privée « %{label} » a été modifiée. La nouvelle description est « %{to} ».
+    update_type_champ: Le type de l’annotation privée « %{label} » a été modifié. Elle est maintenant de type « %{to} ».
+    update_piece_justificative_template: Le modèle de pièce justificative de l’annotation privée « %{label} » a été modifié.
+    update_notice_explicative: La notice explicative de l’annotation privée « %{label} » a été modifiée.
+    update_drop_down_options: "Les options de sélection de l’annotation privée « %{label} » ont été modifiées :"
+    enable_drop_down_other: L’annotation privée « %{label} » comporte maintenant un choix « Autre ».
+    disable_drop_down_other: L’annotation privée « %{label} » ne comporte plus de choix « Autre ».
+    update_carte_layers: "Les référentiels cartographiques de l’annotation privée « %{label} » ont été modifiés :"
+    enable_update_collapsible_explanation: Le texte complémentaire affichable au clic de l’annotation privée « %{label} » a été ajoutée.
+    disable_update_collapsible_explanation: Le texte complémentaire affichable au clic de l’annotation privée « %{label} » a été supprimé.
+    update_collapsible_explanation_text: Le texte complémentaire affichable au clic de l’annotation privée « %{label} » a été modifié. Le nouveau texte est « %{to} ».
+    remove_collapsible_explanation_text: Le texte complémentaire affichable au clic de l’annotation privée « %{label} » a été supprimé.
+    add_condition: Une condition a été ajoutée sur l’annotation privée « %{label} ». La nouvelle condition est « %{to} ».
+    remove_condition: La condition de l’annotation privée « %{label} » a été supprimée.
+    update_condition: La condition de l’annotation privée « %{label} » a été modifiée. La nouvelle condition est « %{to} ».
+    update_character_limit: La limite de caractères de l’annotation privée texte « %{label} » a été modifiée. La nouvelle limite est « %{to} ».
+    remove_character_limit: La limite de caractères de l’annotation privée texte « %{label} » a été supprimée.
+    remove_expression_reguliere: L’expression régulière de l’annotation privée « %{label} » a été supprimée.
+    update_expression_reguliere: L’expression régulière de l’annotation privée « %{label} » a été modifiée. La nouvelle expression est « %{to} ».
+    remove_expression_reguliere_exemple_text: L’exemple d’expression régulière de l’annotation privée « %{label} » a été supprimé.
+    update_expression_reguliere_exemple_text: L’exemple d’expression régulière de l’annotation privée « %{label} » a été modifiée. Le nouvel exemple est « %{to} ».
+    remove_expression_reguliere_error_message: Le message d’erreur de l’expression régulière de l’annotation privée « %{label} » a été supprimé.
+    update_expression_reguliere_error_message: Le message d’erreur de l’expression régulière de l’annotation privée « %{label} » a été modifiée. Le nouveau message est « %{to} ».

@@ -1,0 +1,60 @@
+@import "colors";
+@import "constants";
+@import "mixins";
+
+.procedure-list {
+  .procedure-logo-link {
+    background-image: none;
+  }
+
+  .procedure-logo {
+    @include ie-compatible-background-image();
+
+    height: 93px;
+    width: 93px;
+    margin-right: 3 * $default-spacer;
+    background-position: 95% 50%;
+  }
+
+
+  .procedure-stats {
+    list-style-type: none;
+    padding-inline-start: 0;
+
+    li {
+      min-height: 36px;
+      width: 90px;
+      position: relative;
+
+      border-left: 1px solid $border-grey;
+
+      &:first-child {
+        border-left: none;
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+
+      .stats-number,
+      .stats-legend {
+        text-align: center;
+      }
+
+      .stats-number {
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .stats-legend {
+        font-size: 12px;
+      }
+    }
+
+    .notifications {
+      top: 3px;
+      right: 18px;
+    }
+  }
+}

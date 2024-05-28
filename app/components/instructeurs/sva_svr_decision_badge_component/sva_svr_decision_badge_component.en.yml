@@ -1,0 +1,17 @@
+---
+ en:
+  manual_decision: Manual instruction
+  manual_decision_title: The file must be processed by an instructor, either because it was submitted before the %{decision} configuration, or because it has been returned to the instruction stage.
+  depose_before_configuration: Submitted before %{decision}
+  depose_before_configuration_title: This file was submitted before the %{decision} configuration.
+  previously_termine_title: The file has been returned to the instruction stage. It must now be processed by an instructor.
+  in_days:
+    zero: Today
+    one: Tomorrow
+    other: in %{count} days
+  remaining_days_after_correction:
+    other: "%{count} d. after correction"
+    dossier_terminated_x_days_after_correction:
+      one: "The file will be automatically processed %{count} day after the applicant has re-submitted his file"
+      other: "The file will be automatically processed %{count} days after the applicant has re-submitted his file"
+    dossier_terminated_on: "The file will be automatically processed on %{date}"

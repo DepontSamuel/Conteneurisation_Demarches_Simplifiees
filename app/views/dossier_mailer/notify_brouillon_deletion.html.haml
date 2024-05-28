@@ -1,0 +1,11 @@
+- content_for(:title, "#{@subject}")
+
+%p= t(:hello, scope: [:views, :shared, :greetings])
+
+%p
+  = t('.header', count: @dossier_hashes.size)
+  %ul
+    - @dossier_hashes.each do |d|
+      %li n° #{d[:id]} (#{d[:procedure_libelle]})
+
+= render partial: "layouts/mailers/signature"

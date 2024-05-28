@@ -1,0 +1,72 @@
+- content_for(:title, 'Statistiques')
+- content_for :footer do
+  = render partial: "root/footer"
+
+.statistiques{ 'data-controller': 'chartkick' }
+  %h1.new-h1 Statistiques
+
+  .stat-cards
+    .stat-card.stat-card-half.big-number-card.pull-left
+      %span.big-number-card-title.long-title TOTAL DÉMARCHES DÉMAT. OU EN COURS DE DÉMAT.
+      %span.big-number-card-number
+        = number_with_delimiter(@procedures_numbers[:total])
+      %span.big-number-card-detail
+        #{number_with_delimiter(@procedures_numbers[:last_30_days_count])} (#{@procedures_numbers[:evolution]} %) sur les 30 derniers jours
+      %span.big-number-card-detail
+        = link_to "Voir carte de déploiement", carte_path
+
+    .stat-card.stat-card-half.big-number-card.pull-left
+      %span.big-number-card-title TOTAL DOSSIERS DÉPOSÉS
+      %span.big-number-card-number
+        = number_with_delimiter(@dossiers_numbers[:total])
+      %span.big-number-card-detail
+        #{number_with_delimiter(@dossiers_numbers[:last_30_days_count])} (#{@dossiers_numbers[:evolution]} %) sur les 30 derniers jours
+      %span.big-number-card-detail
+        = link_to "Voir carte de déploiement", carte_path(map_filter: { kind: :nb_dossiers })
+
+
+    .stat-card.stat-card-half.pull-left
+      %ul.segmented-control.pull-right
+        %li.segmented-control-item.segmented-control-item-active{ data: { 'toggle-chart': '.monthly-procedures-chart' } }
+          Par mois
+        %li.segmented-control-item{ data: { 'toggle-chart': '.cumulative-procedures-chart' } }
+          Cumul
+      %span.stat-card-title.pull-left Démarches dématérialisées
+      .clearfix
+
+      .chart-container
+        .chart.monthly-procedures-chart
+          = column_chart @procedures_in_the_last_4_months
+        .chart.cumulative-procedures-chart.hidden
+          = area_chart @procedures_cumulative
+
+    .stat-card.stat-card-half.pull-left
+      %ul.segmented-control.pull-right
+        %li.segmented-control-item.segmented-control-item-active{ data: { 'toggle-chart': '.monthly-dossiers-chart' } }
+          Par mois
+        %li.segmented-control-item{ data: { 'toggle-chart': '.cumulative-dossiers-chart' } }
+          Cumul
+      %span.stat-card-title.pull-left Dossiers déposés
+      .clearfix
+
+      .chart-container
+        .chart.monthly-dossiers-chart
+          = column_chart @dossiers_in_the_last_4_months
+        .chart.cumulative-dossiers-chart.hidden
+          = area_chart @dossiers_cumulative
+
+    .stat-card.stat-card-half.pull-left
+      %span.stat-card-title
+        Répartition des dossiers
+
+      .chart-container
+        .chart
+          = pie_chart @dossiers_states_for_pie,
+            colors: ["#000091", "#7F7FC8", "#9A9AFF", "#00006D"]
+
+    .clearfix
+
+  - if super_admin_signed_in?
+    %h2.new-h2 Téléchargement
+
+    = link_to "Télécharger les statistiques (CSV)", stats_download_path(format: :csv), class: 'fr-btn fr-btn-primary mb-4'

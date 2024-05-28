@@ -1,0 +1,47 @@
+en:
+  activerecord:
+    attributes:
+      procedure_presentation:
+        fields:
+          self:
+            id: File Nº
+            state: State
+            created_at: Created on
+            updated_at: Updated on
+            depose_at: First submission on
+            en_construction_at: Submitted on
+            en_instruction_at: En instruction on
+            processed_at: Done on
+            depose_since: First Submission since
+            updated_since: Updated since
+            en_construction_since: Submitted since
+            en_instruction_since: Instructed since
+            processed_since: Finished since
+            sva_decision_on: SVA decision date
+            sva_decision_before: SVA decision date before
+            svr_decision_on: SVR decision date
+            svr_decision_before: SVR decision date before
+          user:
+            email: Requester
+          followers_instructeurs:
+            email: Email instructeur
+          groupe_instructeur:
+            id: Team
+            label: Team
+          individual:
+            prenom: First name
+            nom: Last name
+            gender: Title
+          avis:
+            answer: Opinion
+            question_answer: Opinion yes/no
+          etablissement:
+            entreprise_siren: SIREN
+            entreprise_forme_juridique: Forme juridique
+            entreprise_nom_commercial: Commercial name
+            entreprise_raison_sociale: Raison sociale
+            entreprise_siret_siege_social: SIRET siège social
+            entreprise_date_creation: Creation date
+            siret: SIRET
+            libelle_naf: Libellé NAF
+            code_postal: Postal code

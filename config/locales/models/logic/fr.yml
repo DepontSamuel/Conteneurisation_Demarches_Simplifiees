@@ -1,0 +1,21 @@
+fr:
+  logic:
+    empty: un membre vide
+    empty_operator: un opérateur vide
+    is: Est
+    is_not: N’est pas
+    operators:
+      'Logic::LessThan': Inférieur à
+      'Logic::LessThanEq': Inférieur ou égal à
+      'Logic::Eq': Égal à
+      'Logic::GreaterThan': Supérieur à
+      'Logic::GreaterThanEq': Supérieur ou égal à
+      'Logic::And': Et
+      'Logic::Or': Ou
+      'Logic::NotEq': N’est pas
+      'Logic::IncludeOperator': Contient
+      'Logic::ExcludeOperator': Ne contient pas
+      'Logic::InDepartementOperator': Est dans le département
+      'Logic::NotInDepartementOperator': N'est pas dans le département
+      'Logic::InRegionOperator': Est dans la région
+      'Logic::NotInRegionOperator': N'est pas dans la région

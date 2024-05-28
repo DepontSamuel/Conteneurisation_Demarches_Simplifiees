@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "data": {
+        "chiffre_affaires": 900001,
+        "date_fin_exercice": "2015-12-01"
+      },
+      "links": {},
+      "meta": {}
+    },
+    {
+      "data": {
+        "chiffre_affaires": 1900051,
+        "date_fin_exercice": "2016-12-01"
+      },
+      "links": {},
+      "meta": {}
+    }
+  ],
+  "meta": {},
+  "links": {}
+}

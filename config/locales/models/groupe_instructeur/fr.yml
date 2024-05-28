@@ -1,0 +1,19 @@
+fr:
+  activerecord:
+    models:
+      procedure:
+        one: Groupe instructeur
+        other: Groupes instructeur
+    attributes:
+      groupe_instructeur:
+        label: Libellé
+        humanized_routing_rule: Règle de routage
+    errors:
+      models:
+        groupe_instructeur:
+          attributes:
+            label:
+              format: "Le libellé %{message}"
+            closed:
+              format: "%{message}"
+              accepted: Il est impossible de désactiver le groupe d’instructeurs par défaut.

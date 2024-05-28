@@ -1,0 +1,38 @@
+fr:
+  activerecord:
+    models:
+      dossier:
+        one: "Dossier"
+        other: "Dossiers"
+    attributes:
+      dossier:
+        id: "Numéro de dossier"
+        state: "État"
+        pending_correction: Demande de correction
+        mandataire_first_name: Prénom
+        mandataire_last_name: Nom
+        for_tiers:
+          false: Pour vous
+          true: "Pour un bénéficiaire : membre de la famille, proche, mandant, professionnel en charge du suivi du dossier…"
+      dossier/state: &state
+        brouillon: "Brouillon"
+        en_construction: "En construction"
+        en_instruction: "En instruction"
+        accepte: "Accepté"
+        refuse: "Refusé"
+        sans_suite: "Classé sans suite"
+        a_corriger: À corriger
+      pending_correction:
+        for_instructeur: "en attente"
+        for_user: "à corriger"
+        resolved: corrigé
+      traitement:
+        state: "État"
+      traitement/state:
+        <<: *state
+    errors:
+      models:
+        dossier:
+          attributes:
+            pending_correction:
+              blank: "Cochez la case indiquant avoir effectué les corrections demandées."

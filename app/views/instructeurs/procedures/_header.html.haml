@@ -1,0 +1,32 @@
+.procedure-header
+  .flex.clipboard-container
+    %h1.fr-h3
+      = "#{procedure_libelle procedure} - n°#{procedure.id}"
+    = render Dsfr::CopyButtonComponent.new(title: t('instructeurs.procedures.index.copy_link_button'), text: commencer_url(procedure.path))
+  = link_to t('instructeurs.dossiers.header.banner.notification_management'), email_notifications_instructeur_procedure_path(procedure), class: 'header-link'
+  |
+  = link_to t('instructeurs.dossiers.header.banner.statistics'), stats_instructeur_procedure_path(procedure), class: 'header-link'
+
+  - if current_administrateur&.owns?(procedure)
+    |
+    = link_to t('instructeurs.dossiers.header.banner.instructeurs'), admin_procedure_groupe_instructeurs_path(procedure), class: 'header-link'
+  - elsif procedure.instructeurs_self_management? && procedure.routing_enabled?
+    |
+    = link_to t('instructeurs.dossiers.header.banner.instructeurs'), instructeur_groupes_path(procedure), class: 'header-link'
+  - elsif procedure.instructeurs_self_management?
+    |
+    = link_to t('instructeurs.dossiers.header.banner.instructeurs'), instructeur_groupe_path(procedure, procedure.defaut_groupe_instructeur), class: 'header-link'
+
+  - if can_send_groupe_message?(procedure)
+    |
+    = link_to t('instructeurs.dossiers.header.banner.contact_users'), email_usagers_instructeur_procedure_path(procedure), class: 'header-link'
+
+  |
+  = link_to t('instructeurs.dossiers.header.banner.administrators_list'), administrateurs_instructeur_procedure_path(procedure), class: 'header-link'
+  |
+  = link_to t('instructeurs.dossiers.header.banner.exports_list'), exports_instructeur_procedure_path(procedure), class: 'header-link'
+  - if @has_export_notification
+    %span.notifications{ 'aria-label': t('instructeurs.dossiers.header.banner.exports_notification_label') }
+
+  #last-export-alert
+    = render partial: "last_export_alert", locals: { export: @last_export, statut: @statut }

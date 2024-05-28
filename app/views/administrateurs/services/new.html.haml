@@ -1,0 +1,11 @@
+= render partial: 'administrateurs/breadcrumbs',
+  locals: { steps: [['Démarches', admin_procedures_path],
+                    [@procedure.libelle.truncate_words(10), admin_procedure_path(@procedure)],
+                    ['Choix du service', admin_services_path(procedure_id: @procedure.id)],
+                    ['Nouveau service']] }
+
+.container
+  %h1 Nouveau Service
+
+  = render partial: 'form',
+    locals: { service: @service, procedure_id: @procedure.id }

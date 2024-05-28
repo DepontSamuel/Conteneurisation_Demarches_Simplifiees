@@ -1,0 +1,2 @@
+- if dossier.present? && dossier.justificatif_motivation.attached?
+  = render Attachment::ShowComponent.new(attachment: dossier.justificatif_motivation.attachment)

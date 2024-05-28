@@ -1,0 +1,12 @@
+Cordialement,
+%br
+%br
+= author_name
+%br
+%br
+Équipe #{Current.application_name}
+%br
+Téléphone (standard) :
+= CONTACT_PHONE
+%br
+= safe_join(CONTACT_ADDRESS.split("\n"), raw('<br>'))

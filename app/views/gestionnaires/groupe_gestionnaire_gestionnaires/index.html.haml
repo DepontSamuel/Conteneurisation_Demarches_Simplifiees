@@ -1,0 +1,21 @@
+= render 'gestionnaires/groupe_gestionnaires/main_navigation'
+= render partial: 'gestionnaires/breadcrumbs',
+  locals: { steps: [['Groupes gestionnaires', gestionnaire_groupe_gestionnaires_path],
+                    ["#{@groupe_gestionnaire.name.truncate_words(10)}", gestionnaire_groupe_gestionnaire_path(@groupe_gestionnaire)],
+                    ['Gestionnaires']], preview: false }
+
+.container
+  %h1 Gérer les gestionnaires de « #{@groupe_gestionnaire.name} »
+
+  %table.table
+    %thead
+      %tr
+        %th= 'Adresse email'
+        %th= 'Enregistré le'
+        %th= 'État'
+        %th
+    %tbody#gestionnaires
+      = render(GroupeGestionnaire::GroupeGestionnaireGestionnaires::GestionnaireComponent.with_collection(@groupe_gestionnaire.gestionnaires.order('users.email'), groupe_gestionnaire: @groupe_gestionnaire))
+
+  .fr-mt-4w
+    = render 'add_gestionnaire_form', groupe_gestionnaire: @groupe_gestionnaire

@@ -1,0 +1,700 @@
+@import "constants";
+@import "colors";
+@import "placeholders";
+
+.form {
+  input.unstyled {
+    padding: 0 !important;
+    background: none !important;
+    border: none !important;
+    width: auto !important;
+
+    &:focus {
+      box-shadow: none !important;
+      background-color: $white !important;
+    }
+  }
+
+  .placeholder {
+    color: $dark-grey;
+    font-style: italic;
+  }
+
+  .fr-input-group,
+  .fr-select-group {
+    margin-bottom: 1rem;
+  }
+
+  .section-2 {
+    margin-top: 1.5rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border-default-grey);
+  }
+
+  .section-2,
+  .section-3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-4,
+  .section-5,
+  .section-6 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  // Keep only bottom margin in nested (consecutive) header sections, ie. first legend for a same level
+  .fr-fieldset > .fr-fieldset__legend + .fr-fieldset__element > .fr-fieldset:first-of-type .header-section {
+    margin-top: 0 !important;
+  }
+
+  // Don't cumulate margin-bottoms for inlined elements (radio...), because .fr-fieldset has already its own
+  // This is important because of multilpe conditional hidden elements to not take additional space,
+  // but we need the usual margin when there are an error or conditional spinner is visible.
+  // scss-lint:disable SingleLinePerSelector
+  .fr-fieldset__element
+    > .fr-fieldset:not(.fr-fieldset--error):not(:has(+ .spinner))
+    > .fr-fieldset__element.fr-fieldset__element--inline {
+    margin-bottom: 0;
+  }
+
+  legend {
+    width: 100%;
+  }
+
+  hr {
+    width: 100%;
+    height: 0;
+    margin-top: $default-padding;
+    margin-bottom: $default-fields-spacer;
+    border: none;
+    border-bottom: 2px solid $border-grey;
+  }
+
+  label:not(.fr-label),
+  legend.form-label {
+    font-size: 18px;
+    margin-bottom: $default-padding;
+    display: block;
+    font-weight: bold;
+
+    &.required {
+      &::after {
+        color: $dark-red;
+        content: " *";
+      }
+    }
+  }
+
+  .form-label {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: $default-padding;
+  }
+
+  .notice {
+    margin-top: - $default-spacer;
+    margin-bottom: $default-padding;
+    color: var(--text-mention-grey);
+
+    p {
+      margin-bottom: $default-spacer;
+    }
+
+    input[type='date'] {
+      display: inline-block;
+    }
+  }
+
+  .editable-champ {
+    position: relative;
+
+    .updated-at {
+      font-size: 0.875rem;
+      float: right;
+      margin-left: $default-spacer;
+      visibility: hidden;
+    }
+
+    &:hover .updated-at,
+    .updated-at.highlighted {
+      visibility: visible;
+      margin-bottom: 4px;
+    }
+
+    &.editable-champ-checkbox {
+      label {
+        font-weight: normal;
+        gap: 0.25rem; // Space before mandatory icon because dsfr set display:flex on checkbox label
+      }
+
+      input[type=checkbox] {
+        position: absolute;
+        top: 3px;
+        left: 0px;
+      }
+
+      // When an (eventual) notice is displayed after the input, give it some bottom margin.
+      .notice {
+        margin-bottom: $default-fields-spacer;
+      }
+    }
+
+    .fr-label {
+      scroll-margin: $default-spacer * 2;
+    }
+  }
+
+  .radios {
+    display: flex;
+
+    // Horizontal layout (default)
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    label {
+      margin-right: $default-padding;
+    }
+
+    // Vertical layout
+    &.vertical {
+      flex-direction: column;
+      align-items: stretch;
+
+      label {
+        margin-right: 0;
+      }
+    }
+
+    label {
+      padding: $default-padding $default-padding $default-padding $default-spacer;
+      border: 1px solid $border-grey;
+      border-radius: 4px;
+      font-weight: normal;
+      background: $white;
+      user-select: none;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        background: $light-grey;
+        cursor: pointer;
+      }
+
+      &:active {
+        border-color: darken($border-grey, 10);
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &.blank-radio {
+        color: $dark-grey;
+        font-style: italic;
+      }
+
+      input[type=radio] {
+        margin-bottom: 0;
+      }
+
+      .notice {
+        margin: 4px 0 0 27px;
+      }
+    }
+  }
+
+  .drop_down_other { // scss-lint:disable SelectorFormat
+    label {
+      font-weight: normal;
+    }
+  }
+
+  .fr-label .fr-hint-text > *,
+  .fr-fieldset__legend .fr-hint-text > * {
+    // la description d'un champ peut contenir du markup (markdown->html),
+    // on herite donc la fontsize/mrgin/padding du fr-hint-text
+    font-size: inherit;
+    margin: inherit;
+    padding: inherit;
+  }
+
+  input[type=password],
+  select:not(.fr-select) {
+    display: block;
+    margin-bottom: 0;
+
+    &.small-margin {
+      margin-bottom: $default-spacer;
+    }
+
+    &.no-margin {
+      margin-bottom: 0;
+    }
+
+    + .spinner:not(.right):not(.left) {
+      position: relative;
+      top: -($default-fields-spacer / 2);
+    }
+  }
+
+
+  input[type=checkbox] {
+    &.small-margin {
+      margin-bottom: $default-spacer;
+    }
+  }
+
+  input[type=text]:not(.fr-input):not(.fr-select) {
+    border: solid 1px $border-grey;
+    padding: $default-padding;
+
+    &.small {
+      padding: $default-spacer;
+    }
+
+    &:disabled {
+      background-color: $border-grey;
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: 0;
+      border: 1px solid $blue-france-500;
+      box-shadow: 0px 0px 2px 1px $blue-france-500;
+    }
+
+    // Hide the browser default invalidity indicator until the field is touched
+    &:invalid:not(:focus):not(.fr-input) {
+      box-shadow: none;
+    }
+
+    &.touched:invalid {
+      border: 1px solid $dark-red;
+      box-shadow: 0px 0px 2px 1px $dark-red;
+    }
+  }
+
+  div.field_with_errors > input { // scss-lint:disable SelectorFormat
+    border: 1px solid $dark-red;
+  }
+
+  input[type=text],
+  input[type=email],
+  input[type=password],
+  input[type=date],
+  input[type=number],
+  input[type=datetime-local],
+  textarea,
+  input[type=tel] {
+    @media (max-width: $two-columns-breakpoint) {
+      width: 100%;
+    }
+
+    // don't set 100% width when width-* classes or size attribute are applied
+    @media (min-width: $two-columns-breakpoint) {
+      &:not([class^='width-']):not([size]) {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (min-width: $two-columns-breakpoint) {
+    input[type=email],
+    input[type=password],
+    input[type=number],
+    input[inputmode=numeric],
+    input[inputmode=decimal],
+    input[type=tel] {
+      max-width: 500px;
+    }
+  }
+
+  input[type=date] {
+    max-width: 180px;
+  }
+
+  // override default site width/max-width for editable-champ form (Usager form)
+  .editable-champ {
+    input {
+      max-width: none;
+
+      @media (min-width: $two-columns-breakpoint) {
+        &:not([size]) {
+          &[type='date'],
+          &[type='tel'],
+          &[type='number'],
+          &[inputmode='numeric'],
+          &[inputmode='decimal'],
+          &[type='datetime-local'] {
+            width: 33.33%;
+          }
+
+          &[type='email'] {
+            width: 66.67%;
+          }
+        }
+      }
+    }
+  }
+
+  input[type=checkbox],
+  input[type=radio] {
+    @extend %outline;
+
+    // Firefox tends to display some controls smaller than other browsers.
+    // Ensure a consistency of size between browsers.
+    width: 16px;
+    height: 16px;
+
+    margin-left: 5px;
+    margin-right: 4px;
+    margin-bottom: 0;
+  }
+
+  [data-reach-combobox-input] {
+    &:not([class^='width-']) {
+      width: 100%;
+      min-width: 50%;
+      max-width: 100%;
+    }
+
+    &:focus {
+      border-color: $blue-france-500;
+    }
+  }
+
+  [data-reach-combobox-token-list] {
+    padding: $default-spacer;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+  }
+
+  [data-reach-combobox-token] button {
+    border: solid 1px $border-grey;
+    border-radius: 4px;
+    padding: $default-spacer;
+    margin-right: $default-spacer;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  [data-reach-combobox-token] button:focus {
+    background-color: $black;
+    color: $white;
+  }
+
+  .editable-champ {
+    &:not(.editable-champ-carte) .algolia-autocomplete {
+      margin-bottom: 2 * $default-padding;
+    }
+
+    .geo-areas {
+      margin-bottom: 2 * $default-padding;
+    }
+
+    &.editable-champ-repetition {
+      fieldset {
+        border: none;
+        padding-left: 0;
+      }
+
+      .row {
+        border-radius: 4px;
+        border: 1px solid $border-grey;
+        padding: $default-padding;
+        margin-bottom: 2 * $default-padding;
+      }
+    }
+
+    .utils-repetition-required .row:first-child .utils-repetition-required-destroy-button {
+      display: none;
+    }
+  }
+
+  .editable-champ-titre_identite { // scss-lint:disable SelectorFormat
+    margin-bottom: 2 * $default-padding;
+  }
+
+  .cnaf-inputs,
+  .dgfip-inputs,
+  .pole-emploi-inputs,
+  .mesri-inputs {
+    label {
+      font-weight: 400;
+    }
+  }
+
+  input.aa-input,
+  input.aa-hint {
+    border-radius: 4px;
+    border: solid 1px $border-grey;
+    padding: $default-padding;
+  }
+
+  input.aa-hint {
+    color: $dark-grey;
+  }
+
+  .header-subsection {
+    font-size: 22px;
+    color: $blue-france-500;
+    margin-bottom: $default-padding;
+  }
+
+  .send-wrapper {
+    display: flex;
+    width: 100%;
+    margin-top: $default-padding;
+    margin-bottom: 2 * $default-padding;
+
+    .button {
+      margin-top: $default-padding;
+      margin-bottom: 0;
+    }
+
+    // Wide layout: align buttons on a single row
+    @media (min-width: 550px) {
+      flex-direction: row;
+
+      .button:not(:first-of-type) {
+        margin-left: $default-spacer;
+      }
+
+      // If there are more than one button, align the "Send" button to the right
+      .button:not(:first-of-type).send {
+        margin-left: auto;
+      }
+    }
+
+    // Narrow layout: stack buttons vertically
+    @media (max-width: 550px) {
+      flex-direction: column-reverse;
+      align-items: center;
+
+      .button {
+        width: 100%;
+        max-width: 350px;
+        line-height: 30px;
+        margin-left: none;
+        margin-right: none;
+      }
+    }
+  }
+
+  .justify-content--space-between {
+    justify-content: space-between;
+  }
+
+  .inline-champ {
+    margin-left: $default-spacer;
+    margin-right: $default-spacer;
+    width: 100%;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  fieldset + .spinner {
+    position: relative;
+    top: -($default-fields-spacer / 2);
+  }
+}
+
+.type-de-champ-expression-reguliere {
+  display: flex;
+  align-items: center;
+
+  &:before,
+  &:after {
+    font-weight: bold;
+    content: "/";
+  }
+}
+
+[data-react-component-value^="ComboMultiple"] {
+  margin-bottom: $default-fields-spacer;
+
+  [data-reach-combobox-input] {
+    flex-grow: 1;
+    background-image: image-url("icons/chevron-down");
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    border-radius: 4px;
+    border: solid 1px $border-grey;
+    padding: $default-padding;
+    margin: $default-spacer;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      margin-right: $default-spacer;
+      display: inline-block;
+    }
+  }
+}
+
+[data-reach-combobox-token-label] {
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+[data-reach-combobox-option] {
+  font-size: 16px;
+  list-style-type: none;
+}
+
+[data-reach-combobox-option][aria-selected="true"] {
+  background: $light-blue !important;
+  color: $white;
+}
+
+[data-reach-combobox-separator] {
+  font-size: 16px;
+  color: $dark-grey;
+  background: $light-grey;
+  padding: $default-spacer;
+}
+
+[data-reach-combobox-no-results] {
+  font-size: 16px;
+  color: $dark-grey;
+  background: $light-grey;
+  padding: $default-spacer;
+}
+
+[data-reach-combobox-token] button {
+  cursor: pointer;
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  line-height: 1;
+  padding: 0;
+  margin-right: 4px;
+  display: flex;
+  align-items: center !important;
+}
+
+[data-reach-combobox-input] button:focus {
+  outline-color: $light-blue;
+}
+
+[data-fr-theme="dark"] [data-reach-combobox-popover] {
+  border: none;
+  background: var(--background-action-low-blue-france);
+}
+
+[data-fr-theme="dark"] [data-reach-combobox-option]:hover {
+  background: var(--background-action-low-blue-france-hover);
+}
+
+[data-reach-combobox-popover] {
+  z-index: 20;
+}
+
+.fconnect-form {
+  input[type='password'] {
+    margin-bottom: 16px;
+  }
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 0.6; // normalize opacity across browsers
+  color: $dark-grey;
+}
+
+@media (max-width: 62em) {
+
+  .padded-fixed-footer {
+    padding-top: 120px;
+  }
+}
+
+@media (min-width: 62em) {
+
+  .padded-fixed-footer {
+    padding-top: 60px;
+  }
+}
+
+[data-fr-theme="dark"] .fixed-footer {
+  border-top: 2px solid var(--background-action-low-blue-france-hover);
+  background-color: var(--background-action-low-blue-france);
+}
+
+.mandatory {
+  fill: currentColor;
+}
+
+.fixed-footer {
+  border-top: 2px solid $blue-france-500;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-top: $default-padding;
+  background-color: $white;
+  z-index: 2;
+}
+
+.fr-menu__list {
+  padding: $default-spacer;
+  overflow-y: auto;
+
+  .fr-menu__item {
+    list-style-type: none;
+    margin-bottom: $default-spacer;
+
+    &[aria-selected] {
+      font-weight: bold;
+    }
+  }
+}
+
+.fr-fieldset__element {
+  @media (min-width: 48em) {
+    // Logic taken from DSFR source code to limit width of fieldset element.
+    // Cf dsfr/src/component/form/style/_scheme.scss
+    $short-text-width: 32rem;
+
+    &--short-text {
+      flex: 0 0 #{$short-text-width};
+    }
+
+    &--short-text:not(&--inline) {
+      margin-right: calc(100% - #{$short-text-width});
+    }
+  }
+}
+
+.resize-none {
+  resize: none;
+}
+
+.resize-x {
+  resize: horizontal;
+}
+
+.resize-y {
+  resize: vertical;
+}

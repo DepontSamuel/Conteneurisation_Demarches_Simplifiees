@@ -1,0 +1,92 @@
+= render partial: 'administrateurs/breadcrumbs',
+    locals: { steps: [['Démarches', admin_procedures_back_path(@procedure)],
+                      ["#{@procedure.libelle.truncate_words(10)}"]],
+              metadatas: true }
+
+.fr-container.procedure-admin-container
+  %ul.fr-btns-group.fr-btns-group--inline-sm.fr-btns-group--icon-left
+    - if @procedure.draft_revision.valid?
+      - if !@procedure.brouillon?
+        = link_to 'Télécharger', admin_procedure_archives_path(@procedure), class: 'fr-btn fr-btn--tertiary fr-btn--icon-left fr-icon-download-line', id: "archive-procedure"
+
+        = link_to 'PDF', commencer_dossier_vide_for_revision_path(@procedure.active_revision), target: "_blank", rel: "noopener", class: 'fr-btn fr-btn--tertiary fr-btn--icon-left fr-icon-printer-line', id: "pdf-procedure"
+
+      - if @procedure.brouillon? || @procedure.draft_changed?
+        = link_to 'Tester la démarche', commencer_url(@procedure.path, test: true), target: :blank, rel: :noopener, class: 'fr-btn fr-btn--tertiary fr-btn--icon-left fr-icon-flashlight-line'
+
+      - if @procedure.publiee? || @procedure.brouillon?
+        = link_to 'Envoyer une copie', admin_procedure_transfert_path(@procedure), class: 'fr-btn fr-btn--tertiary fr-btn--icon-left fr-icon-send-plane-line'
+
+      - if !@procedure.publiee? && !@procedure.close? && !@procedure.depubliee?
+        = link_to 'Publier', admin_procedure_publication_path(@procedure), class: 'fr-btn fr-btn--primary fr-btn--icon-left fr-icon-success-line', id: 'publish-procedure-link', data: { disable_with: "Publication..." }
+
+      - if (@procedure.close? || @procedure.depubliee?) && !@procedure.draft_changed?
+        = link_to 'Réactiver', admin_procedure_publication_path(@procedure), class: 'fr-btn fr-btn--primary fr-btn--icon-left fr-icon-success-line', id: 'publish-procedure-link', data: { disable_with: "Publication..." }
+
+      - if @procedure.locked? && !@procedure.close?
+        = link_to 'Clore', admin_procedure_close_path(procedure_id: @procedure.id), class: 'fr-btn fr-btn--tertiary fr-btn--icon-left fr-icon-calendar-close-fill', id: "close-procedure-link"
+
+.fr-container
+  = render TypesDeChampEditor::ErrorsSummary.new(revision: @procedure.draft_revision)
+
+- if @procedure.draft_changed?
+  .fr-container
+    = render Dsfr::CalloutComponent.new(title: t(:has_changes, scope: [:administrateurs, :revision_changes]), icon: "fr-fi-information-line") do |c|
+      - c.with_body do
+        = render Procedure::RevisionChangesComponent.new changes: @procedure.revision_changes, previous_revision: @procedure.published_revision
+
+        = render Procedure::PublicationWarningComponent.new(procedure: @procedure)
+
+      - c.with_bottom do
+        %ul.fr-mt-2w.fr-btns-group.fr-btns-group--inline
+          - if @procedure.publiee?
+            %li= button_to 'Publier les modifications', admin_procedure_publish_revision_path(@procedure), class: 'fr-btn', id: 'publish-procedure-link', data: { disable_with: "Publication...", confirm: 'Êtes-vous sûr de vouloir publier les modifications ?' }, disabled: !@procedure.draft_revision.valid? || @procedure.errors.present?, method: :put
+          - else
+            %li= button_to 'Publier les modifications', admin_procedure_publication_path(@procedure), class: 'fr-btn', id: 'publish-procedure-link', data: { disable_with: "Publication..." }, disabled: !@procedure.draft_revision.valid? || @procedure.errors.present?, method: :get
+          %li= button_to "Réinitialiser les modifications", admin_procedure_reset_draft_path(@procedure), class: 'fr-btn fr-btn--secondary fr-mr-2w', data: { confirm: 'Êtes-vous sûr de vouloir réinitialiser les modifications ?' }, method: :put
+
+- if !@procedure.procedure_expires_when_termine_enabled?
+  = render partial: 'administrateurs/procedures/suggest_expires_when_termine', locals: { procedure: @procedure }
+
+- if @procedure.close?
+  .fr-container
+    = render Dsfr::AlertComponent.new(title: 'cette démarche est close', state: (:warning), heading_level: 'h2', extra_class_names: 'fr-my-2w') do |c|
+      - c.with_body do
+        %p
+          Les dossiers en cours peuvent être instruits, mais aucun nouveau dossier ne peut plus être déposé.
+        - if @procedure.closing_reason == 'internal_procedure'
+          - new_procedure = Procedure.find_by(id: @procedure.replaced_by_procedure_id)
+          %p
+            = "Cette démarche est remplacée par une autre démarche dans Démarches simplifiées :"
+            = link_to(new_procedure.libelle, admin_procedure_path(new_procedure))
+        - if @procedure.closing_reason == 'other'
+          %p
+            = "Plus d'informations dans la #{link_to('page de fermeture', closing_details_path(@procedure.path))}, visible par les usagers."
+        - if @procedure.closing_notification_brouillon? || @procedure.closing_notification_en_cours?
+          = "Un email a été envoyé pour informer les usagers le #{ l(@procedure.closed_at.to_date) }"
+
+.fr-container
+  %h2= "Gestion de la démarche № #{number_with_html_delimiter(@procedure.id)}"
+  %h3.fr-h6 Indispensable avant publication
+  .fr-grid-row.fr-grid-row--gutters.fr-mb-5w
+    = render Procedure::Card::PresentationComponent.new(procedure: @procedure)
+    = render Procedure::Card::ZonesComponent.new(procedure: @procedure) if Rails.application.config.ds_zonage_enabled
+    = render Procedure::Card::ChampsComponent.new(procedure: @procedure)
+    = render Procedure::Card::ServiceComponent.new(procedure: @procedure, administrateur: current_administrateur)
+    = render Procedure::Card::AdministrateursComponent.new(procedure: @procedure)
+    = render Procedure::Card::InstructeursComponent.new(procedure: @procedure)
+    = render Procedure::Card::ModificationsComponent.new(procedure: @procedure)
+
+  %h3.fr-h6 Pour aller plus loin
+  .fr-grid-row.fr-grid-row--gutters.fr-mb-5w
+    = render Procedure::Card::AttestationComponent.new(procedure: @procedure)
+    = render Procedure::Card::ExpertsComponent.new(procedure: @procedure)
+    = render Procedure::Card::EmailsComponent.new(procedure: @procedure)
+    = render Procedure::Card::AnnotationsComponent.new(procedure: @procedure)
+    = render Procedure::Card::APIEntrepriseComponent.new(procedure: @procedure)
+    = render Procedure::Card::APIParticulierComponent.new(procedure: @procedure)
+    = render Procedure::Card::SVASVRComponent.new(procedure: @procedure)
+    = render Procedure::Card::MonAvisComponent.new(procedure: @procedure)
+    = render Procedure::Card::DossierSubmittedMessageComponent.new(procedure: @procedure)
+    = render Procedure::Card::ChorusComponent.new(procedure: @procedure)
+    = render Procedure::Card::AccuseLectureComponent.new(procedure: @procedure)

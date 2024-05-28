@@ -1,0 +1,9 @@
+@import "constants";
+
+.commencer {
+  @media (max-width: 62em) {
+    .optional-on-small-screens {
+      display: none;
+    }
+  }
+}

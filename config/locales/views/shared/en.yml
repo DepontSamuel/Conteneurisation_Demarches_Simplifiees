@@ -1,0 +1,25 @@
+en:
+  views:
+    shared:
+      dossiers:
+        identite_entreprise:
+          warning_for_private_info: "The establishment SIRET %{siret} applied his right to not publish information regarding his identity. These informaiton won't be visible from instructor services."
+      avis:
+        demande_envoyee_le: "Feedback send at %{date}"
+        demande_revoquee_le: "Feedback revoked at %{date}"
+        relance_effectuee_le: "Reminder sent at %{date}"
+        reponse_donnee_le: "Response sent at %{date}"
+        en_attente: "Waiting for response"
+      france_connect_login:
+        title: "With FranceConnect"
+        description: "FranceConnect is a solution proposed by the government to secure and simplify the connection to web services."
+        login_button: "Sign in with"
+        help_link: What is FranceConnect?
+        separator: or
+      account:
+        already_user_question: 'Do you already have an account?'
+        already_user: "I already have an account"
+        create: 'Create an account'
+        signin: 'Sign in'
+      messages:
+        remove_file: 'Remove file'

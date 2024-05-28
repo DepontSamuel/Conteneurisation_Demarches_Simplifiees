@@ -1,0 +1,16 @@
+- if @is_dossier_in_batch_operation
+  = render Dsfr::NoticeComponent.new(closable: false) do |c|
+    - c.with_title do
+      Un traitement de masse est en cours sur ce dossier, vous ne pouvez pas le modifier.
+      = link_to "Recharger la page", instructeur_dossier_path
+      pour voir si l'opération est finie.
+
+.sub-header
+  = render partial: 'instructeurs/dossiers/header_top', locals: { dossier: }
+  = render partial: 'instructeurs/dossiers/header_bottom', locals: { dossier: }
+
+.fr-container
+  .print-header
+    = dossier.procedure.libelle.truncate_words(10)
+    >
+    = "Dossier nº #{dossier.id} (#{dossier_display_state(dossier, lower: true)})"

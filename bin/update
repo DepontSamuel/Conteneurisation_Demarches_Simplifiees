@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+
+# path to your application root.
+APP_ROOT = File.expand_path('..', __dir__)
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+FileUtils.chdir APP_ROOT do
+  # This script is a way to update your development environment automatically.
+  # Add necessary update steps to this file.
+
+  puts '== Installing dependencies =='
+  system! 'gem install bundler --conservative'
+  system('bundle check') || system!('bundle install')
+  system! 'bun --version'
+  system! 'bun install'
+
+  if ENV["UPDATE_WEBDRIVER"]
+    puts "\n== Updating webdrivers =="
+    puts "\nyou must add ~/.local/bin to your path"
+    system! 'bunx @puppeteer/browsers clear --path ~/.local/bin/headless_browsers'
+
+    system! 'bunx @puppeteer/browsers install chromedriver --path ~/.local/bin/headless_browsers'
+    system! 'bunx @puppeteer/browsers install chrome --path ~/.local/bin/headless_browsers'
+    puts "\n if chrome and chromedriver versions are not compatible, add the version you want in the above lines. ex : chrome@121"
+
+    system! 'rm -f ~/.local/bin/chromedriver && ln -s $(find ~/.local/bin/headless_browsers -type f -name chromedriver) ~/.local/bin/chromedriver'
+    system! 'rm -f ~/.local/bin/chrome && ln -s $(find ~/.local/bin/headless_browsers -type f -name chrome) ~/.local/bin/chrome'
+  end
+
+  puts "\n== Updating database =="
+  system! 'bin/rails db:migrate'
+
+  puts "\n== Running after_party tasks =="
+  system! 'bin/rails after_party:run'
+
+  puts "\n== Removing old logs =="
+  system! 'bin/rails log:clear'
+
+  puts "\n== Done =="
+  puts "You can now start (or restart) the application server with `bin/rails server`."
+end

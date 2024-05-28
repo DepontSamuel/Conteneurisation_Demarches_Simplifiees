@@ -1,0 +1,69 @@
+@import "colors";
+@import "constants";
+@import "placeholders";
+@import "mixins";
+
+#auth,
+#agentconnect {
+  // On small screens, hide the procedure description text on auth pages.
+  // It avoids pushing the sign-in/sign-up form out of the viewport.
+  //
+  // The procedure description can still be read from the /commencer
+  // pages.
+  .column {
+    padding-top: $default-spacer;
+  }
+
+  .form label {
+    margin-bottom: $default-spacer / 2;
+  }
+}
+
+.auth-form {
+  .auth-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2 * $default-spacer;
+  }
+
+  .remember-me {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+
+  .register {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+
+  .auth-signup-button {
+    white-space: nowrap;
+  }
+}
+
+.sign-in-form .form {
+  input[type="email"] {
+    margin-bottom: $default-spacer;
+  }
+
+  input[type="password"] {
+    margin-bottom: $default-spacer;
+  }
+
+  input[type="checkbox"] {
+    margin-bottom: 0;
+  }
+}
+
+#session-new {
+  .important-header {
+    font-weight: bold;
+    font-size: 18px;
+  }
+}

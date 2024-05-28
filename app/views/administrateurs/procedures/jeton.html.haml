@@ -1,0 +1,26 @@
+= render partial: 'administrateurs/breadcrumbs',
+  locals: { steps: [['Démarches', admin_procedures_back_path(@procedure)],
+                    [@procedure.libelle.truncate_words(10), admin_procedure_path(@procedure)],
+                    ['Jeton']] }
+
+.container
+  %h1.page-title
+    Configurer le jeton API Entreprise
+
+.container
+  %h1
+  = form_with model: @procedure, url: url_for({ controller: 'administrateurs/procedures', action: :update_jeton }) do |f|
+    = render Dsfr::AlertComponent.new(state: :info, size: :sm, extra_class_names: 'fr-mb-2w') do |c|
+      - c.with_body do
+        %p
+          Démarches Simplifiées utilise
+          = link_to 'API Entreprise', "https://entreprise.api.gouv.fr/"
+          qui permet de récupérer les informations administratives des entreprises et des associations.
+          Si votre démarche nécessite des autorisations spécifiques que Démarches Simplifiées n’a pas par défaut, merci de renseigner ici le jeton
+          = link_to 'API Entreprise', "https://api.gouv.fr/les-api/api-entreprise/demande-acces"
+          propre à votre démarche.
+
+    .fr-input-group
+      = f.label :api_entreprise_token, "Jeton", class: 'fr-label'
+      = f.password_field :api_entreprise_token, value: @procedure.read_attribute(:api_entreprise_token), class: 'fr-input'
+    = f.button 'Enregistrer', class: 'fr-btn'

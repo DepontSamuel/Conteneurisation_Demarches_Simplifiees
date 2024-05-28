@@ -1,0 +1,55 @@
+%h1= "Dossier nº #{@dossier.id}"
+%h1.subtitle= "Démarche : #{@dossier.procedure.libelle}"
+
+%h2 Identité du demandeur
+
+= render partial: "shared/dossiers/user_infos", locals: { user_deleted: @dossier.user_deleted?, email: @dossier.user_email_for(:display), for_tiers: @dossier.for_tiers?, beneficiaire_mail: @dossier.for_tiers? ? @dossier.individual.email : "" }
+
+- if @dossier.etablissement.present?
+  = render partial: "shared/dossiers/identite_entreprise", locals: { etablissement: @dossier.etablissement, profile: 'instructeur' }
+
+- if @dossier.individual.present?
+  = render partial: "shared/dossiers/identite_individual", locals: { individual: @dossier.individual, dossier: @dossier }
+
+%h2 Formulaire
+
+- types_de_champ_public = @dossier.revision.types_de_champ_public
+- if types_de_champ_public.any? || @dossier.procedure.routing_enabled?
+  = render ViewableChamp::SectionComponent.new(dossier: @dossier, types_de_champ: types_de_champ_public, demande_seen_at: nil, profile: 'instructeur')
+
+%h2 Annotations privées
+
+- types_de_champ_private = @dossier.revision.types_de_champ_private
+- if types_de_champ_private.any?
+  = render ViewableChamp::SectionComponent.new(dossier: @dossier, types_de_champ: types_de_champ_private, demande_seen_at: nil, profile: 'instructeur')
+- else
+  Aucune annotation privée
+
+%h2 Avis
+
+- if @dossier.avis.present?
+  %table
+    - @dossier.avis.each do |avis|
+      %tr
+        %th
+          = "Avis de #{avis.email_to_display}"
+          - if avis.confidentiel?
+            (confidentiel)
+        %td
+          - if avis.answer.present?
+            = avis.answer
+          - else
+            En attente de réponse
+- else
+  Aucun avis
+
+%h2 Messagerie
+
+.messagerie
+  %ul.messages-list
+    - @dossier.commentaires.with_attached_piece_jointe.each do |commentaire|
+      %li
+        = render Dossiers::MessageComponent.new(commentaire: commentaire, connected_user: current_instructeur)
+
+%script{ type: "text/javascript" }
+  window.print();

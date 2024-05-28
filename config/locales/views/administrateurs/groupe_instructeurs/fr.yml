@@ -1,0 +1,60 @@
+fr:
+  administrateurs:
+    experts_procedures:
+      wrong_address:
+          one: "%{value} n’est pas une adresse email valide"
+          other: "%{value} ne sont pas des adresses emails valides"
+      create:
+        experts_assignment:
+          one: "L’expert %{value} a été affecté à la démarche n° %{procedure}"
+          other: "Les experts %{value} ont été affectés à la démarche n° %{procedure}"
+    groupe_instructeurs:
+      index:
+        procedures: Démarches
+        instructors_group: Groupe d’instructeurs
+        existing_groupe:
+          one: "%{count} groupe existe"
+          other: "%{count} groupes existent"
+      add_instructeur:
+        wrong_address:
+          one: "%{emails} n’est pas une adresse email valide"
+          other: "%{emails} ne sont pas des adresses emails valides"
+        assignment:
+          one: "L’instructeur %{emails} a été affecté au groupe « %{groupe} »."
+          other: "Les instructeurs %{emails} ont été affectés au groupe « %{groupe} »."
+      reaffecter_dossiers:
+        existing_groupe:
+          one: "%{count} groupe existe"
+          other: "%{count} groupes existent"
+      instructeurs:
+        assigned_instructeur:
+          one: "%{count} instructeur est affecté"
+          other: "%{count} instructeurs sont affectés"
+      import_export:
+        csv_import:
+          import_file: Importer le fichier
+          import_file_alert: Tous les instructeurs ajoutés à la procédure vont être notifiés par email. Voulez-vous continuer ?
+          import_file_procedure_not_published: L’import par fichier CSV est disponible une fois la démarche publiée
+          groupes:
+            title: Import / Export en masse
+            notice_1_html: Pour l’import, votre fichier csv doit comporter 2 colonnes (Groupe, Email) et être séparé par des virgules (<a href=/csv/fr/import-groupe-test.csv>exemple de fichier</a>). Le poids du fichier doit être inférieur à %{csv_max_size}.
+            notice_2: L’import n’écrase pas les groupes et instructeurs existants. Il permet uniquement d'en ajouter.
+          instructeurs:
+            title: Import en masse
+            notice_1_html: Pour l’import, le fichier csv doit comporter 1 seule colonne (Email) avec une adresse email d’instructeur par ligne (<a href=/csv/import-instructeurs-test.csv>exemple de fichier</a>). Le poids du fichier doit être inférieur à %{csv_max_size}.
+            notice_2: L’import n’écrase pas les instructeurs existants. Il permet uniquement d'en ajouter.
+        existing_groupe:
+          one: "%{count} groupe existe"
+          other: "%{count} groupes existent"
+        groupe:
+          one: "%{count} groupe"
+          other: "%{count} groupes"
+        found:
+          one: "trouvé"
+          other: "trouvés"
+      ajout:
+        procedures: Démarches
+      options:
+        procedures: Démarches
+      simple_routing:
+        procedures: Démarches

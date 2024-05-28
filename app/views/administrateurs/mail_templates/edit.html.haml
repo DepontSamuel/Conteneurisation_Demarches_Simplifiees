@@ -1,0 +1,33 @@
+- content_for(:root_class, 'scroll-margins-for-sticky-footer')
+- if params[:id] == 'closed_mail'
+  = render partial: 'admin/closed_mail_template_attestation_inconsistency_alert'
+
+= render partial: 'administrateurs/breadcrumbs',
+  locals: { steps: [['Démarches', admin_procedures_path],
+                    [@procedure.libelle.truncate_words(10), admin_procedure_path(@procedure)],
+                    ["Configuration des emails", admin_procedure_mail_templates_path(@procedure)],
+                    [@mail_template.class.const_get(:DISPLAYED_NAME)]] }
+
+.procedure-form
+  .procedure-form__columns.container
+
+    = form_for @mail_template,
+      url: admin_procedure_mail_template_path(@procedure, @mail_template.class.const_get(:SLUG)),
+      method: :put,
+      html: { class: 'form form-ds-fr-white procedure-form__column--form fr-background-alt--blue-france' } do |f|
+
+      %h1.page-title= @mail_template.class.const_get(:DISPLAYED_NAME)
+      = render partial: 'form', locals: { f: f, tags: @mail_template.tags }
+      .procedure-form__actions.sticky--bottom
+        .actions-right
+          = f.submit 'Enregistrer', class: 'fr-btn'
+
+    .procedure-form__column--preview
+      .procedure-form__preview.sticky--top
+        %h3
+          .procedure-form__preview-title
+            Aperçu
+            .notice
+              Cet aperçu est mis à jour après chaque sauvegarde.
+        .procedure-preview
+          = render partial: 'apercu', locals: { procedure: @mail_template.procedure }

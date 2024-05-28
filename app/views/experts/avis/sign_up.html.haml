@@ -1,0 +1,20 @@
+.two-columns.avis-sign-up
+  .columns-container
+    .column.left
+      %h2.fr-py-5w.text-center= @dossier.procedure.libelle
+      %p.dossier Dossier nº #{@dossier.id}
+    .column
+      = form_for(User.new(email: @email), url: sign_up_expert_avis_path(email: @email), method: :post, html: { class: "fr-py-5w" }) do |f|
+        %h1.fr-h2= t('views.registrations.new.title', name: Current.application_name)
+        %fieldset.fr-mb-0.fr-fieldset{ aria: { labelledby: 'create-account-legend' } }
+          .fr-fieldset__element
+            %p.fr-text--sm= t('utils.mandatory_champs')
+
+          .fr-fieldset__element= render Dsfr::InputComponent.new(form: f, attribute: :email, input_type: :email_field, opts: { disabled: true, autocomplete: 'email' })
+          .fr-fieldset__element
+            = render Dsfr::InputComponent.new(form: f, attribute: :password, input_type: :password_field, opts: { autocomplete: 'new-password', minlength: PASSWORD_MIN_LENGTH }) do |c|
+              - c.with_describedby do
+                = render partial: "devise/password_rules", locals: { id: c.describedby_id }
+
+        %ul.fr-btns-group
+          %li= f.submit t('views.shared.account.create'), class: "fr-btn"

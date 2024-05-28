@@ -1,0 +1,115 @@
+en:
+  archiver:
+    finish:
+      text_success:
+        one: "%{success_count}/1 file has been archived"
+        other: "%{success_count}/%{count} files have been archived"
+    in_progress:
+      text_success:
+        one: "1 is being archived"
+        other: "%{success_count}/%{count} files have been archived"
+  desarchiver:
+    finish:
+      text_success:
+        one: "%{success_count}/1 file has been unarchived"
+        other: "%{success_count}/%{count} files have been unarchived"
+    in_progress:
+      text_success:
+        one: "1 is being unarchived"
+        other: "%{success_count}/%{count} files have been unarchived"
+  passer_en_instruction:
+    finish:
+      text_success:
+        one: "%{success_count}/1 file has been changed to instructing"
+        other: "%{success_count}/%{count} files have been changed to instructing"
+    in_progress:
+      text_success:
+        one: "1 is being changed to instructing"
+        other: "%{success_count}/%{count} files have been changed to instructing"
+  repousser_expiration:
+    finish:
+      text_success:
+        one: "%{success_count}/1 file will be kept for an additional month"
+        other: "%{success_count}/%{count} files will be kept for an additional month"
+    in_progress:
+      text_success:
+        one: "1 is being kept for an additional month"
+        other: "%{success_count}/%{count} files will be kept for an additional month"
+  accepter:
+    finish:
+      text_success:
+        one: "%{success_count}/1 file has been accepted"
+        other: "%{success_count}/%{count} files have been accepted"
+    in_progress:
+      text_success:
+        one: "1 is being accepted"
+        other: "%{success_count}/%{count} files have been accepted"
+  refuser:
+    finish:
+      text_success:
+        one: "%{success_count}/1 file has been refused"
+        other: "%{success_count}/%{count} files have been refused"
+    in_progress:
+      text_success:
+        one: "1 is being refused"
+        other: "%{success_count}/%{count} files have been refused"
+  supprimer:
+    finish:
+      text_success:
+        one: "%{success_count}/1 file has been deleted"
+        other: "%{success_count}/%{count} files have been deleted"
+    in_progress:
+      text_success:
+        one: "1 is being deleted"
+        other: "%{success_count}/%{count} files have been deleted"
+  restaurer:
+    finish:
+      text_success:
+        one: "%{success_count}/1 file has been restored"
+        other: "%{success_count}/%{count} files have been restored"
+    in_progress:
+      text_success:
+        one: "1 is being restored"
+        other: "%{success_count}/%{count} files have been restored"
+  classer_sans_suite:
+    finish:
+      text_success:
+        one: "%{success_count}/1 file has been closed without continuation"
+        other: "%{success_count}/%{count} files have been closed without continuation"
+    in_progress:
+      text_success:
+        one: "1 is being closed without continuation"
+        other: "%{success_count}/%{count} files have been closed without continuation"
+  follow:
+    finish:
+      text_success:
+        one: "%{success_count}/1 file has been followed"
+        other: "%{success_count}/%{count} files have been followed"
+    in_progress:
+      text_success:
+        one: "1 is being followed"
+        other: "%{success_count}/%{count} files have been followed"
+  unfollow:
+    finish:
+      text_success:
+        one: "%{success_count}/1 file has been unfollowed"
+        other: "%{success_count}/%{count} files have been unfollowed"
+    in_progress:
+      text_success:
+        one: "1 is being unfollowed"
+        other: "%{success_count}/%{count} files have been unfollowed"
+  repasser_en_construction:
+    finish:
+      text_success:
+        one: "%{success_count}/1 file has been changed to in progress"
+        other: "%{success_count}/%{count} files have been changed to in progress"
+    in_progress:
+      text_success:
+        one: "1 is being changed to in progress"
+        other: "%{success_count}/%{count} files have been changed to in progress"
+  title:
+    finish: The bulk action is finished
+    in_progress:  A bulk action is processing
+  link_text: Refresh this webpage
+  after_link_text: to check if the process is over.
+  context: This bulk action was created by %{mail}, %{time_ago}

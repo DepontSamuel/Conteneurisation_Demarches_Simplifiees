@@ -1,0 +1,23 @@
+{
+  "include": ["app/javascript/**/*.ts", "app/javascript/**/*.tsx"],
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ES2019"],
+    "target": "ES2019",
+    "moduleResolution": "node",
+    "module": "es2020",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "types": ["react/next", "react-dom/next", "vite/client"],
+    "paths": {
+      "~/*": ["./app/javascript/*"],
+      "@utils": ["./app/javascript/shared/utils.ts"]
+    },
+    "noEmit": true
+  }
+}

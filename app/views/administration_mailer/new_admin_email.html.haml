@@ -1,0 +1,17 @@
+%p
+  Un nouvel administrateur a été créé sur #{Current.application_name}.
+
+%ul
+  %li
+    Plateforme :
+    = root_url
+
+  %li
+    Email :
+    = @admin.email
+
+  %li
+    Créateur :
+    = @administration.email
+
+= render partial: "layouts/mailers/signature"

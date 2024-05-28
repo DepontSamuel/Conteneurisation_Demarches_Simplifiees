@@ -1,0 +1,208 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "1b805585567775589825c0eda58cb84c074fc760d0a7afb101c023a51427f2b5",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/users/dossiers/_merci.html.haml",
+      "line": 26,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "current_user.dossiers.includes(:procedure).find(params[:id]).procedure.monavis_embed",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "Users::DossiersController",
+          "method": "merci",
+          "line": 309,
+          "file": "app/controllers/users/dossiers_controller.rb",
+          "rendered": {
+            "name": "users/dossiers/merci",
+            "file": "app/views/users/dossiers/merci.html.haml"
+          }
+        },
+        {
+          "type": "template",
+          "name": "users/dossiers/merci",
+          "line": 6,
+          "file": "app/views/users/dossiers/merci.html.haml",
+          "rendered": {
+            "name": "users/dossiers/_merci",
+            "file": "app/views/users/dossiers/_merci.html.haml"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "users/dossiers/_merci"
+      },
+      "user_input": "current_user.dossiers.includes(:procedure)",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "737aa4f7931ece068cce98d7cc66057a1ec81b9be43e469c3569ff1be91bbf09",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/graphql/connections/cursor_connection.rb",
+      "line": 150,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "items.order(order_column => ((:desc or :asc)), :id => ((:desc or :asc))).limit(limit).where(\"(#{order_table}.#{order_column}, #{order_table}.id) < (?, ?)\", timestamp, id)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Connections::CursorConnection",
+        "method": "resolve_nodes"
+      },
+      "user_input": "order_table",
+      "confidence": "Weak",
+      "cwe_id": [
+        89
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "a7d18cc3434b4428a884f1217791f9a9db67839e73fb499f1ccd0f686f08eccc",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped parameter value",
+      "file": "app/views/faq/show.html.haml",
+      "line": 12,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Redcarpet::Markdown.new(Redcarpet::TrustedRenderer.new(view_context), :autolink => true).render(loader_service.find(\"#{params[:category]}/#{params[:slug]}\").content)",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "FAQController",
+          "method": "show",
+          "line": 14,
+          "file": "app/controllers/faq_controller.rb",
+          "rendered": {
+            "name": "faq/show",
+            "file": "app/views/faq/show.html.haml"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "faq/show"
+      },
+      "user_input": "params[:category]",
+      "confidence": "Weak",
+      "cwe_id": [
+        79
+      ],
+      "note": "Theses params are not rendered"
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "a94939cb1e551341f443c6414634816e335bbfb03f0836ebd8b3ad8564d7f343",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/graphql/connections/cursor_connection.rb",
+      "line": 153,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "items.order(order_column => ((:desc or :asc)), :id => ((:desc or :asc))).limit(limit).where(\"(#{order_table}.#{order_column}, #{order_table}.id) > (?, ?)\", timestamp, id)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Connections::CursorConnection",
+        "method": "resolve_nodes"
+      },
+      "user_input": "order_table",
+      "confidence": "Weak",
+      "cwe_id": [
+        89
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "bd1df30f95135357b646e21a03d95498874faffa32e3804fc643e9b6b957ee14",
+      "check_name": "SQL",
+      "message": "Possible SQL injection",
+      "file": "app/models/concerns/dossier_filtering_concern.rb",
+      "line": 32,
+      "link": "https://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "where(\"#{values.count} OR #{\"(#{ProcedurePresentation.sanitized_column(table, column)} ILIKE ?)\"}\", *values.map do\n \"%#{value}%\"\n end)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "DossierFilteringConcern",
+        "method": null
+      },
+      "user_input": "values.count",
+      "confidence": "Medium",
+      "cwe_id": [
+        89
+      ],
+      "note": "The table and column are escaped, which should make this safe"
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "c97049798ff05438dcca6f3ee1a714f2336041837411ab001a7e3caf1bfb75c8",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/layouts/mailers/_signature.html.haml",
+      "line": 9,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Current.application_name.gsub(\".\", \"&#8288;.\")",
+      "render_path": [
+        {
+          "type": "template",
+          "name": "administrateur_mailer/api_token_expiration",
+          "line": 19,
+          "file": "app/views/administrateur_mailer/api_token_expiration.haml",
+          "rendered": {
+            "name": "layouts/mailers/_signature",
+            "file": "app/views/layouts/mailers/_signature.html.haml"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "layouts/mailers/_signature"
+      },
+      "user_input": null,
+      "confidence": "Medium",
+      "cwe_id": [
+        79
+      ],
+      "note": "Current is not a model"
+    },
+    {
+      "warning_type": "Cross-Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "f74cfb12b3183f456594e809f222bb2723cc232aa5b8f5f7d9bd6d493c1521fb",
+      "check_name": "CrossSiteScripting",
+      "message": "Unescaped model attribute",
+      "file": "app/views/notification_mailer/send_notification_for_tiers.html.haml",
+      "line": 31,
+      "link": "https://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "Current.application_name.gsub(\".\", \"&#8288;.\")",
+      "render_path": null,
+      "location": {
+        "type": "template",
+        "template": "notification_mailer/send_notification_for_tiers"
+      },
+      "user_input": null,
+      "confidence": "Medium",
+      "cwe_id": [
+        79
+      ],
+      "note": "Current is not a model"
+    }
+  ],
+  "updated": "2024-04-23 18:27:12 +0200",
+  "brakeman_version": "6.1.2"
+}

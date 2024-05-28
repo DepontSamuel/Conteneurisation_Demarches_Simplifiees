@@ -1,0 +1,58 @@
+fr:
+  shared:
+    dossiers:
+      beneficiaire: '%{beneficiaire}, dossier rempli par %{mandataire}'
+      france_connect_informations:
+        details_no_name: "Le dossier a été déposé par un compte FranceConnect."
+        details: "Le dossier a été déposé par le compte de %{name}."
+        details_updated: "Le dossier a été déposé par le compte de %{name}, authentifié par FranceConnect le %{date}."
+      motivation:
+        refused_by_svr: "Le service traitant n’a pas été en mesure de traiter votre demande dans le délai imparti par la règle du Silence Vaut Rejet."
+      header:
+        expires_at:
+          brouillon: "Expirera le %{date} (%{duree_conservation_totale} mois après la création du dossier)"
+          en_construction: "Expirera le %{date} (%{duree_conservation_totale} mois après le dépôt du dossier)"
+          en_instruction: "Ce dossier est en instruction, il n’expirera pas"
+          accepte: "Expirera le %{date}  (%{duree_conservation_totale} mois après le traitement du dossier)"
+          refuse: "Expirera le %{date}  (%{duree_conservation_totale} mois après le traitement du dossier)"
+          sans_suite: "Expirera le %{date} (%{duree_conservation_totale} mois après le traitement dossier)"
+
+
+    champs:
+      cnaf:
+        show:
+          not_filled: non renseigné
+          fetching_data: "La récupération automatique des données pour l’allocataire Nº %{numero_allocataire} avec le code postal %{code_postal} est en cours."
+          data_fetched: "Des données concernant %{sources} liées au compte Nº %{numero_allocataire} avec le code postal %{code_postal} ont été reçues depuis la CAF."
+          data_fetched_title: "Données obtenues de la Caisse nationale d’allocations familiales"
+      rna:
+        show:
+          not_filled: non renseigné
+          not_found: "RNA %{rna} (aucun établissement trouvé)"
+        association:
+          data_fetched: "Ce RNA correspond à %{title}, %{address}"
+          not_found: "Aucun établissement trouvé"
+          network_error: "Une erreur réseau a empêché l’association liée à ce RNA d’être trouvée"
+      rnf:
+        show:
+          not_found: "RNF %{rnf} (aucune fondation trouvée)"
+      dgfip:
+        show:
+          not_filled: non renseigné
+          fetching_data: "La récupération automatique des données pour le déclarant Nº %{numero_fiscal} avec la référence d’avis %{reference_avis} est en cours."
+          data_fetched: "Des données concernant %{sources} liées au déclarant Nº %{numero_fiscal} avec la référence d’avis %{reference_avis} ont été reçues depuis la DGFiP."
+          data_fetched_title: "Données obtenues de la Direction générale des Finances publiques"
+      pole_emploi:
+        show:
+          not_filled: non renseigné
+          fetching_data: "La récupération automatique des données pour l’identifiant %{identifiant} est en cours."
+          data_fetched: "Des données concernant %{sources} liées à l’identifiant %{identifiant} ont été reçues depuis Pôle emploi."
+          data_fetched_title: "Données obtenues de Pôle emploi"
+      mesri:
+        show:
+          not_filled: non renseigné
+          fetching_data: "La récupération automatique des données pour l’INE %{ine} est en cours."
+          data_fetched: "Des données concernant %{sources} liées à l’INE %{ine} ont été reçues depuis le MESRI."
+          data_fetched_title: "Données obtenues du MESRI"
+      drop_down_list:
+        other: Autre

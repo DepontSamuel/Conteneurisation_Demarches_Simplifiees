@@ -1,0 +1,26 @@
+@import "colors";
+
+span.notifications {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: $orange;
+}
+
+.fr-tabs__list span.notifications {
+  z-index: 2;
+  top: 5px;
+  right: 8px;
+}
+
+.fr-nav {
+  &__notifiable {
+    position: relative;
+  }
+
+  .notifications {
+    top: 1rem;
+    right: 0.25rem;
+  }
+}

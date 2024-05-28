@@ -1,0 +1,17 @@
+- if champ.selections_utilisateur.present?
+  .fr-label Sélections utilisateur
+  .areas
+    %ul
+      - champ.selections_utilisateur.slice(0, 50).each do |geo_area|
+        = render Dossiers::GeoAreaComponent.new(geo_area:, editing:)
+      - if champ.selections_utilisateur.size > 50
+        %li
+          %span
+            et #{champ.selections_utilisateur.size - 50} autres points, lignes ou polygones.
+
+- if champ.cadastres.present?
+  .fr-label Parcelles cadastrales
+  .areas
+    %ul
+      - champ.cadastres.each do |geo_area|
+        = render Dossiers::GeoAreaComponent.new(geo_area:, editing:)

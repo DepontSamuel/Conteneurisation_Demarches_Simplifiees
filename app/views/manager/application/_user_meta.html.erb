@@ -1,0 +1,69 @@
+<dl>
+  <dt class="attribute-label" id="meta-usager">
+    Emails
+  </dt>
+  <dd class="attribute-data attribute-data--meta-usager">
+    <%= link_to('Voir les derniers emails', emails_manager_user_path(user)) %>
+  </dd>
+</dl>
+<dl>
+  <dt class="attribute-label" id="meta-usager">
+    Usager
+  </dt>
+  <dd class="attribute-data attribute-data--meta-usager">
+    <% style = "background-color: red;color: white;" if user.blocked_at %>
+    <%= link_to('Voir son compte utilisateur', manager_user_path(user),  style: style) %>
+  </dd>
+</dl>
+
+<dl>
+  <dt class="attribute-label" id="meta-usager">
+    Instructeur
+  </dt>
+  <dd class="attribute-data attribute-data--meta-usager">
+    <% if user.instructeur? %>
+      <%= link_to('Voir son compte instructeur', manager_instructeur_path(user.instructeur)) %>
+    <% else %>
+      Pas instructeur !
+    <% end %>
+  </dd>
+</dl>
+
+<dl>
+  <dt class="attribute-label" id="meta-usager">
+    Expert
+  </dt>
+  <dd class="attribute-data attribute-data--meta-usager">
+    <% if user.expert? %>
+      <%= link_to('Voir son compte expert', manager_expert_path(user.expert)) %>
+    <% else %>
+      Pas expert !
+    <% end %>
+  </dd>
+</dl>
+
+<dl>
+  <dt class="attribute-label" id="meta-usager">
+    Administrateur
+  </dt>
+  <dd class="attribute-data attribute-data--meta-usager">
+    <% if user.administrateur? %>
+      <%= link_to('Voir son compte administrateur', manager_administrateur_path(user.administrateur)) %>
+    <% else %>
+      Pas administrateur !
+    <% end %>
+  </dd>
+</dl>
+
+<dl>
+  <dt class="attribute-label" id="meta-usager">
+    Gestionnaire
+  </dt>
+  <dd class="attribute-data attribute-data--meta-usager">
+    <% if user.gestionnaire? %>
+      <%= link_to('Voir son compte gestionnaire', manager_gestionnaire_path(user.gestionnaire)) %>
+    <% else %>
+      Pas gestionnaire !
+    <% end %>
+  </dd>
+</dl>

@@ -1,0 +1,30 @@
+= render partial: 'gestionnaires/breadcrumbs',
+  locals: { steps: [['Groupes gestionnaire', gestionnaire_groupe_gestionnaires_path],
+                    ["#{@groupe_gestionnaire.name.truncate_words(10)}", gestionnaire_groupe_gestionnaire_path(@groupe_gestionnaire)],
+                    ["Messagerie"]], preview: false }
+
+.container
+  %h1 Messagerie de « #{@groupe_gestionnaire.name} »
+
+  = render partial: 'list_commentaires', locals: { commentaires: @commentaires, groupe_gestionnaire: @groupe_gestionnaire }
+
+  - if @commentaires_children_groups.present?
+    %h5 Messagerie des groupes enfants
+    = render partial: 'list_commentaires', locals: { commentaires: @commentaires_children_groups, groupe_gestionnaire: @groupe_gestionnaire }
+
+  - if @groupe_gestionnaire.parent_id
+    %h5 Messagerie du groupe parent « #{@groupe_gestionnaire.parent.name} »
+    - if @commentaires_parent_group.present?
+      = render partial: 'list_commentaires', locals: { commentaires: @commentaires_parent_group, groupe_gestionnaire: @groupe_gestionnaire }
+    - else
+      %table.fr-table.width-100.mt-3
+        %thead
+          %tr
+            %th= 'Adresse email'
+            %th= 'Dernier message'
+            %th
+          %tr
+            %td= "Messages avec le groupe gestionnaire parent"
+            %td
+            %td
+              = link_to 'Voir', parent_groupe_gestionnaire_gestionnaire_groupe_gestionnaire_commentaires_path(@groupe_gestionnaire), class: 'fr-btn'

@@ -1,0 +1,38 @@
+en:
+  activerecord:
+    models:
+      dossier:
+        one: "File"
+        other: "Files"
+    attributes:
+      dossier:
+        id: "File number"
+        state: "State"
+        pending_correction: Request correction
+        mandataire_first_name: First name
+        mandataire_last_name: Last name
+        for_tiers:
+          false: For yourself
+          true: "For someone else : a family member, a relative, a professional, someone you represent."
+      dossier/state: &state
+        brouillon: "Draft"
+        en_construction: "In progress"
+        en_instruction: "Processing"
+        accepte: "Accepted"
+        refuse: "Refused"
+        sans_suite: "No further action"
+        a_corriger: To be corrected
+      pending_correction:
+        for_instructeur: "pending"
+        for_user: "to be corrected"
+        resolved: corrected
+      traitement:
+        state: "State"
+      traitement/state:
+        <<: *state
+    errors:
+      models:
+        dossier:
+          attributes:
+            pending_correction:
+              blank: Check to confirm that you have made the requested corrections.

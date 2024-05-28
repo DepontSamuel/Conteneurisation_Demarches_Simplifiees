@@ -1,0 +1,5 @@
+---
+en:
+  errors:
+    virus_infected: Virus detected, download is blocked.
+    corrupted_file: The file is corrupted, the download is blocked.

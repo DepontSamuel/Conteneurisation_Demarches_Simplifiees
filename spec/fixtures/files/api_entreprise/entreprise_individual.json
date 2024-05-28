@@ -1,0 +1,53 @@
+{
+  "data": {
+    "siren": "909700890",
+    "siret_siege_social": "90970089000025",
+    "categorie_entreprise": null,
+    "type": "personne_physique",
+    "personne_morale_attributs": {
+      "raison_sociale": null,
+      "sigle": null
+    },
+    "personne_physique_attributs": {
+      "pseudonyme": null,
+      "prenom_usuel": "MARINE",
+      "prenom_1": "MARINE",
+      "prenom_2": null,
+      "prenom_3": null,
+      "prenom_4": null,
+      "nom_usage": "LE LOUARN SMAIL",
+      "nom_naissance": "LE LOUARN",
+      "sexe": "F"
+    },
+    "diffusable_commercialement": true,
+    "status_diffusion": "diffusible",
+    "forme_juridique": {
+      "code": "1000",
+      "libelle": "Entrepreneur individuel"
+    },
+    "activite_principale": {
+      "code": "71.12B",
+      "nomenclature": "NAFRev2",
+      "libelle": "Ingénierie, études techniques"
+    },
+    "tranche_effectif_salarie": {
+      "de": null,
+      "a": null,
+      "code": null,
+      "date_reference": null,
+      "intitule": null
+    },
+    "etat_administratif": "A",
+    "economie_sociale_et_solidaire": null,
+    "date_cessation": null,
+    "date_creation": 1643151600
+  },
+  "links": {
+    "siege_social": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/90970089000025",
+    "siege_social_adresse": "https://entreprise.api.gouv.fr/v3/insee/sirene/etablissements/90970089000025/adresse"
+  },
+  "meta": {
+    "date_derniere_mise_a_jour": 1657576800,
+    "redirect_from_siren": null
+  }
+}

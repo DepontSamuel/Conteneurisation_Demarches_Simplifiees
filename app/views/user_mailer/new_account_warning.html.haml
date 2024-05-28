@@ -1,0 +1,32 @@
+- content_for(:title, @subject)
+
+%p
+  Bonjour,
+
+%p
+  Une demande de création de compte a été réalisée sur le site #{Current.application_name} pour l'email #{@user.email}.
+
+%p
+  %strong Votre compte existe déjà.
+
+- if @procedure
+  %p
+    Si vous souhaitez remplir la démarche
+    = surround '« ', ' »,' do
+      %i= @procedure.libelle
+    cliquez sur le bouton ci-dessous.
+
+  = round_button("Commencer la démarche « #{@procedure.libelle.truncate(60)} »", commencer_sign_in_url(path: @procedure.path), :primary)
+  = vertical_margin(16)
+  = round_button('J’ai oublié mon mot de passe', new_password_url(@user), :secondary)
+
+- else
+  %p
+    Vous n’avez rien à faire. Si vous avez oublié votre mot de passe, cliquez sur le bouton ci-dessous.
+  = round_button('J’ai oublié mon mot de passe', new_password_url(@user), :secondary)
+
+= vertical_margin(6)
+%p
+  Si vous n’êtes pas à l'origine de cette demande, vous pouvez ignorer ce mail.
+
+= render partial: "layouts/mailers/signature"

@@ -1,0 +1,49 @@
+- content_for(:title, "Démarches")
+
+.sub-header
+  .fr-container
+    %h1.fr-h3.fr-mb-0 Démarches
+    = render partial: 'instructeurs/procedures/synthese', locals: { procedures: @procedures, all_dossiers_counts: @all_dossiers_counts }
+
+    %nav.fr-tabs{ role: 'navigation', 'aria-label': t('views.users.dossiers.secondary_menu') }
+      %ul.fr-tabs__list{ role: 'tablist' }
+        = tab_item(t('pluralize.en_cours', count: @procedures_en_cours_count), instructeur_procedures_path(statut: 'en-cours'), active: @statut == 'en-cours', badge: number_with_html_delimiter(@procedures_en_cours_count))
+        = tab_item(t('pluralize.en_test', count: @procedures_draft_count), instructeur_procedures_path(statut: 'brouillons'), active: @statut == 'brouillons', badge: number_with_html_delimiter(@procedures_draft_count))
+        = tab_item(t('pluralize.closed', count: @procedures_closes_count), instructeur_procedures_path(statut: 'archivees'), active: @statut == 'archivees', badge: number_with_html_delimiter(@procedures_closes_count))
+
+.fr-container
+  - if @statut.in? ["publiees", "en-cours"] # FIX ME: @statut === "en-cours" à partir du 1/11/2023
+    = render Dsfr::CalloutComponent.new(title: nil) do |c|
+      - c.with_body do
+        = t(".procedure_en_cours_description")
+    - collection = @procedures_en_cours
+  - if @statut === "brouillons"
+    = render Dsfr::CalloutComponent.new(title: nil) do |c|
+      - c.with_body do
+        = t(".procedure_en_test_description")
+    - collection = @procedures_draft
+  - if @statut === "archivees"
+    = render Dsfr::CalloutComponent.new(title: nil) do |c|
+      - c.with_body do
+        = t(".procedure_close_description")
+    - collection = @procedures_closes
+
+
+  - if collection.present?
+    %h2.fr-h6
+      = page_entries_info collection
+    %ul.procedure-list.fr-pl-0
+      = render partial: 'instructeurs/procedures/list',
+        collection: collection,
+        as: :p,
+        locals: { dossiers_count_per_procedure: @dossiers_count_per_procedure,
+          dossiers_a_suivre_count_per_procedure: @dossiers_a_suivre_count_per_procedure,
+          dossiers_archived_count_per_procedure: @dossiers_archived_count_per_procedure,
+          dossiers_termines_count_per_procedure: @dossiers_termines_count_per_procedure,
+          dossiers_expirant_count_per_procedure: @dossiers_expirant_count_per_procedure,
+          dossiers_supprimes_recemment_count_per_procedure: @dossiers_supprimes_recemment_count_per_procedure,
+          followed_dossiers_count_per_procedure: @followed_dossiers_count_per_procedure,
+          procedure_ids_en_cours_with_notifications: @procedure_ids_en_cours_with_notifications,
+          procedure_ids_termines_with_notifications: @procedure_ids_termines_with_notifications }
+
+    = paginate collection, views_prefix: 'shared'

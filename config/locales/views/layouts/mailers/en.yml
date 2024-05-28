@@ -1,0 +1,33 @@
+en:
+  layouts:
+    mailers:
+      service_footer:
+        do_not_reply: Please do not reply to this email.
+        contact_admin: To contact your administration, go directly to the
+        file_messagerie: file mailbox
+        procedure_management: "This procedure is managed by:"
+        ask_question: "Ask a question about your file:"
+        email_sent_to: "This email has been sent to :"
+        by_messagerie: By messaging
+        by_email: "By email :"
+        by_phone: "By phone :"
+        schedule: "Schedule :"
+      signature:
+        team: "The team"
+      for_tiers:
+        good_morning: Good morning,
+        first_part: We inform you that file no. %{dossier_id}, completed on your behalf by %{mandataire_first_name} %{mandataire_last_name}, on the procedure
+        second_part: To find out more, please contact
+        en_construction: has been submited %{processed_at}.
+        en_instruction: has been received and taken care of on %{processed_at}. The administration is reviewing your file.
+        repasser_en_instruction: will be re-examined, the previous decision on this file is obsolete.
+        accepte: has been accepted on %{processed_at}.
+        refuse: has been refused on %{processed_at}.
+        sans_suite: has been closed without continuation on %{processed_at}.
+        accuse_lecture: has been processed on %{processed_at}.
+      accuse_lecture:
+        good_morning: Hello,
+        first_part: We inform you that a decision on file no. %{dossier_id} of the procedure
+        second_part: has been rendered.
+        third_part: To find out its nature, please log in to your account
+        commentaire_html: <p>Hello,</p><p>We inform you that a decision on your file has been rendered.</p>Sincerely,<br>%{service}

@@ -1,0 +1,44 @@
+= form_with model: [ :admin, service], local: true do |f|
+
+  = render Dsfr::InputComponent.new(form: f, attribute: :nom, input_type: :text_field)
+
+  = render Dsfr::InputComponent.new(form: f, attribute: :organisme, input_type: :text_field)
+
+  .fr-input-group
+    = f.label :type_organisme, class: "fr-label" do
+      Type d’organisme
+
+    = f.select :type_organisme, Service.type_organismes.keys.map { |key| [ I18n.t("type_organisme.#{key}"), key] }, {}, class: 'fr-select'
+
+  = render Dsfr::InputComponent.new(form: f, attribute: :siret, input_type: :text_field, opts: { placeholder: "14 chiffres, sans espace" }) do |c|
+    - c.with_hint do
+      = "Indiquez le numéro de SIRET de l’organisme dont ce service dépend. Rechercher le SIRET sur "
+      = link_to("annuaire-entreprises.data.gouv.fr", annuaire_link, **external_link_attributes)
+
+  = render Dsfr::CalloutComponent.new(title: "Informations de contact") do |c|
+    - c.with_body do
+      Votre démarche sera hébergée par #{Current.application_name} – mais nous ne pouvons pas assurer le support des démarches. Et malgré la dématérialisation, les usagers se poseront parfois des questions légitimes sur le processus administratif.
+      %br
+      %br
+      %strong Il est donc indispensable que les usagers puissent vous contacter
+      par le moyen de leur choix s’ils ont des questions sur votre démarche.
+      %br
+      %br
+      Ces informations de contact seront visibles par les utilisateurs de la démarche, affichées dans le menu « Aide », ainsi qu’en pied de page lors du dépôt d’un dossier. En cas d’informations invalides, #{Current.application_name} se réserve le droit de suspendre la publication de la démarche.
+
+  = render Dsfr::InputComponent.new(form: f, attribute: :email, input_type: :email_field)
+  = render Dsfr::InputComponent.new(form: f, attribute: :telephone, input_type: :telephone_field)
+  = render Dsfr::InputComponent.new(form: f, attribute: :horaires, input_type: :text_area)
+  = render Dsfr::InputComponent.new(form: f, attribute: :adresse, input_type: :text_area)
+
+  - if procedure_id.present?
+    = hidden_field_tag :procedure_id, procedure_id
+
+  .padded-fixed-footer
+    .fixed-footer
+      .fr-container
+        %ul.fr-btns-group.fr-btns-group--inline-md
+          %li
+            = f.submit "Enregistrer", class: "fr-btn"
+          %li
+            = link_to "Annuler et revenir à la page de suivi", admin_procedure_path(id: @procedure.id), class: "fr-btn fr-btn--secondary"

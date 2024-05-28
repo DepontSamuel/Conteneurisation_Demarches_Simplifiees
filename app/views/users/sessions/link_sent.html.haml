@@ -1,0 +1,29 @@
+- content_for(:title, 'Lien de connexion par email')
+
+- content_for :footer do
+  = render partial: 'root/footer'
+
+.fr-container.fr-my-5w
+  .fr-grid-row
+    .fr-col-12.fr-col-offset-md-1.fr-col-md-7
+      %h1.fr-mt-6w Encore une petite étape !
+
+      %section
+        %p.fr-text--lead
+          Nous venons de vous envoyer un courriel sur votre boite email <strong>#{@email}</strong>.
+          Veuillez l’ouvrir et cliquer sur le lien de <strong>connexion sécurisée à #{Current.application_name}</strong>.
+
+        %p.fr-text--lead
+          Ce lien est <strong>valide une semaine</strong> et peut être réutilisé <strong>plusieurs fois</strong>.
+
+        %p.fr-text--sm.fr-text-mention--grey
+          Ce courriel peut mettre jusqu’à <strong>15 minutes</strong> pour arriver. Si vous n’avez pas reçu de courriel (n’hésitez pas à vérifier dans les indésirables), cliquez sur le bouton ci-dessous.
+
+      = button_to instructeurs_reset_link_sent_path, class: 'fr-btn fr-btn--secondary fr-btn--icon-left fr-icon-mail-line', method: 'POST' do
+        Renvoyer le courriel
+
+      %section
+        %p.fr-mt-3w
+          Si vous voyez cette page trop souvent, #{link_to "consultez notre aide", t("links.common.faq.confirmer_compte_chaque_connexion_url")}
+        %p.fr-mt-3w
+          = t('views.users.shared.contact_us_if_any_trouble_html', href: contact_admin_url)

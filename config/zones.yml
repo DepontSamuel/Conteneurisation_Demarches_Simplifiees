@@ -1,0 +1,125 @@
+ministeres:
+  - MAA:
+    labels:
+      - '2022-05-20': "Ministère de l'Agriculture et de la Souveraineté alimentaire"
+      - '2020-07-06': "Ministère de l'Agriculture et de l'Alimentation"
+    tchap_hs:
+      - agent.agriculture.tchap.gouv.fr
+  - MC:
+    labels:
+      - '2020-07-06': "Ministère de la Culture"
+    tchap_hs:
+      - agent.culture.tchap.gouv.fr
+
+
+  - MAS:
+    labels:
+      - '2024-03-12': "Non attribué"
+      - '2022-05-20': "Ministère de la Santé et de la Prévention"
+      - '2020-07-06': "Ministère des Solidarités et de la Santé"
+    tchap_hs:
+      - agent.social.tchap.gouv.fr
+  - MSAPH:
+    labels:
+      - '2024-03-12': "Non attribué"
+      - '2022-05-20': "Ministère des Solidarités, de l'Autonomie et des personnes handicapées"
+      - '2020-07-06': "Non attribué"
+    tchap_hs:
+      - agent.social.tchap.gouv.fr
+  - MTEI:
+    labels:
+      - '2024-03-12': "Ministère du Travail, de la Santé et des Solidarités"
+      - '2022-05-20': "Ministère du Travail, du Plein emploi et de l'Insertion"
+      - '2020-07-06': "Ministère du Travail"
+    tchap_hs:
+      - agent.social.tchap.gouv.fr
+  - MEAE:
+    labels:
+      - '2020-07-06': "Ministère de l'Europe et des Affaires étrangères"
+    tchap_hs:
+      - agent.diplomatie.tchap.gouv.fr
+  - MEF:
+    labels:
+      - '2022-05-20': "Ministère de l'Économie, des Finances et de la Souveraineté industrielle et numérique"
+      - '2020-07-06': "Ministère de l'Économie, des Finances et de la Relance"
+    tchap_hs:
+      - agent.finances.tchap.gouv.fr
+  - MJS:
+    labels:
+      - '2022-05-20': "Non attribué"
+      - '2020-07-06': "Ministère de la Jeunesse et des Sports"
+    tchap_hs:
+      - agent.social.tchap.gouv.fr
+  - MSJO:
+    labels:
+      - '2022-05-20': "Ministère des Sports et des Jeux olympiques et paralympiques"
+      - '2020-07-06': "Non attribué"
+    tchap_hs:
+      - agent.social.tchap.gouv.fr
+  - MEN:
+    labels:
+      - '2022-05-20': "Ministère de l'Éducation nationale et de la Jeunesse"
+      - '2020-07-06': "Ministère de l'Éducation nationale, de la Jeunesse et des Sports"
+    tchap_hs:
+      - agent.education.tchap.gouv.fr
+  - ESR:
+    labels:
+      - '2022-05-20': "Ministère de l'Enseignement supérieur et de la Recherche"
+      - '2020-07-06': "Ministère de l'Enseignement supérieur, de la Recherche et de l'Innovation"
+    tchap_hs:
+      - agent.education.tchap.gouv.fr
+  - MI:
+    labels:
+      - '2022-05-20': "Ministère de l'Intérieur et des Outre-mer"
+      - '2020-07-06': "Ministère de l'Intérieur"
+    tchap_hs:
+      - agent.interieur.tchap.gouv.fr
+  - MINARM:
+    labels:
+      - '2020-07-06': "Ministère des Armées"
+    tchap_hs:
+      - agent.intradef.tchap.gouv.fr
+  - MJ:
+    labels:
+      - '2020-07-06': "Ministère de la Justice"
+    tchap_hs:
+      - agent.justice.tchap.gouv.fr
+  - MTES:
+    labels:
+      - '2022-05-20': "Ministère de la Transition écologique et de la Cohésion des territoires"
+      - '2020-07-06': "Ministère de la Transition écologique"
+    tchap_hs:
+      - agent.dev-durable.tchap.gouv.fr
+  - MTE:
+    labels:
+      - '2024-03-12': "Non attribué"
+      - '2022-05-20': "Ministère de la Transition énergétique"
+      - '2020-07-06': "Non attribué"
+    tchap_hs:
+      - agent.dev-durable.tchap.gouv.fr
+  - MCTRCT:
+    labels:
+      - '2022-05-20': "Non attribué"
+      - '2020-07-06': "Ministère de la Cohésion des territoires et des Relations avec les collectivités territoriales"
+    tchap_hs:
+      - agent.dev-durable.tchap.gouv.fr
+  - PM:
+    labels:
+      - '2020-07-06': "Premier ministre"
+    tchap_hs:
+      - agent.pm.tchap.gouv.fr
+      - agent.dinum.tchap.gouv.fr
+  - MER:
+    labels:
+      - '2022-05-20': "Non attribué"
+      - '2020-07-06': "Ministère de la Mer"
+  - MTFP:
+    labels:
+      - '2020-07-06': "Ministère de la Transformation et de la Fonction publiques"
+    tchap_hs:
+      - agent.pm.tchap.gouv.fr
+      - agent.dinum.tchap.gouv.fr
+  - OM:
+    labels:
+      - '2022-05-20': "Non attribué"
+      - '2020-07-06': "Ministère des Outre-mer"
