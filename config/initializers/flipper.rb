@@ -9,6 +9,7 @@ def setup_features(features)
   existing = Flipper.preload(features).map { _1.name.to_sym }
   missing = features - existing
 
+  Flipper.add("switch_domain")
   missing.each do |feature|
     # Feature is disabled by default
     Flipper.add(feature.to_s)
