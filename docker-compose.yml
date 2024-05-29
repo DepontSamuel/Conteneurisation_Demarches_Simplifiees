@@ -11,7 +11,7 @@ services:
     environment:
       DATABASE_URL: "postgresql://tps_development:tps_development@db:5432/tps_development"
       REDIS_URL: "redis://redis:6379/0"
-      RAILS_ENV: "test"
+      RAILS_ENV: "development"
       WEB_CONCURRENCY: 1 # Permet de limiter le nombre de processus Puma
       PROMETHEUS_EXPORTER_ENABLED: "true" # Permet de monitorer l'application
     depends_on:
@@ -29,11 +29,11 @@ services:
   redis:
     image: redis:6.2
 
-  chrome:
-    image: selenium/standalone-chrome:latest
-    shm_size: '2gb'
-    ports:
-      - "4444:4444"
+  #chrome:
+  #  image: selenium/standalone-chrome:latest
+  #  shm_size: '2gb'
+  #  ports:
+  #    - "4444:4444"
 
 volumes:
   pgdata:
