@@ -11,7 +11,7 @@ services:
     environment:
       DATABASE_URL: "postgresql://tps_development:tps_development@db:5432/tps_development"
       REDIS_URL: "redis://redis:6379/0"
-      RAILS_ENV: "development"
+      RAILS_ENV: "test"
       WEB_CONCURRENCY: 1 # Permet de limiter le nombre de processus Puma
       PROMETHEUS_EXPORTER_ENABLED: "true" # Permet de monitorer l'application
     depends_on:

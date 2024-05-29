@@ -120,6 +120,7 @@ group :test do
   gem 'capybara' # Integration testing
   gem 'capybara-email' # Access emails during integration tests
   gem 'capybara-screenshot' # Save a dump of the page when an integration test fails
+  gem 'letter_opener_web'
   gem 'factory_bot'
   gem 'launchy'
   gem 'rack_session_access'

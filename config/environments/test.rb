@@ -63,6 +63,14 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+  # Action Mailer settings
+  ActionMailer::Base.add_delivery_method :balancer, BalancerDeliveryMethod
+  config.action_mailer.balancer_settings = {
+    helo: ENV['HELO_ENABLED'] == 'enabled' ? 100 : 0,
+    letter_opener: ENV['HELO_ENABLED'] == 'enabled' ? 0 : 100
+  }
+  config.action_mailer.delivery_method = :letter_opener_web
+
   config.action_mailer.default_url_options = { host: ENV.fetch("APP_HOST") }
   config.action_mailer.asset_host = "http://" + ENV.fetch("APP_HOST")
   Rails.application.routes.default_url_options = {

@@ -29,6 +29,12 @@ class SuperAdminsController < ApplicationController
       issuer += " (dev)"
     end
 
+    if Rails.env.test?
+      issuer += " (local)"
+    elsif helpers.staging?
+      issuer += " (dev)"
+    end
+
     label = "#{issuer}:#{current_super_admin.email}"
     RQRCode::QRCode.new(current_super_admin.otp_provisioning_uri(label, issuer: issuer))
   end

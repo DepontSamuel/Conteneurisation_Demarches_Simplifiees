@@ -121,6 +121,10 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  if Rails.env.test?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
   #
   # Monitoring
   #

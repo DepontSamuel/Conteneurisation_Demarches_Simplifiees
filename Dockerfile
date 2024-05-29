@@ -30,6 +30,8 @@ COPY Gemfile Gemfile.lock ./
 RUN gem install bundler:2.3.14
 RUN bundle install
 
+RUN skylight disable_dev_warning
+
 # Copy the rest of the application code into the image
 COPY . .
 
