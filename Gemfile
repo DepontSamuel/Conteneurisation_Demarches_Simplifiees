@@ -29,6 +29,7 @@ gem 'delayed_job_active_record'
 gem 'delayed_job_web'
 gem 'devise'
 gem 'devise-i18n'
+gem 'drb'
 gem 'devise-two-factor'
 gem 'discard'
 gem 'dotenv-rails', require: 'dotenv/rails-now' # dotenv should always be loaded before rails

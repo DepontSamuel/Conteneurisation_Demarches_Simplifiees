@@ -30,7 +30,7 @@ yarn-debug.log*
 /spec/support/spec_config.local.rb
 /config/initializers/config.local.rb
 /coverage
-
+/.history
 # Local Netlify folder
 .netlify
 
