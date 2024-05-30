@@ -53,3 +53,5 @@ public/vite-test
 
 app/graphql/schema.json
 public/graphql/schema
+
+/.history

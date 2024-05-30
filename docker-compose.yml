@@ -8,6 +8,9 @@ services:
       - ".:/app"
     ports:
       - "3000:3000"
+      - "3036:3036"
+      - "3037:3037"
+
     environment:
       DATABASE_URL: "postgresql://tps_development:tps_development@db:5432/tps_development"
      # REDIS_URL: "redis://redis:6379/0"
