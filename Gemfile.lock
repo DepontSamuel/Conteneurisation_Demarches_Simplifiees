@@ -183,6 +183,7 @@ GEM
     crass (1.0.6)
     css_parser (1.16.0)
       addressable
+    csv (3.3.0)
     daemons (1.4.1)
     date (3.3.4)
     deep_cloneable (3.2.0)
@@ -444,6 +445,7 @@ GEM
     multi_json (1.15.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
+    mutex_m (0.2.0)
     net-http (0.4.1)
       uri
     net-imap (0.4.11)
@@ -473,6 +475,7 @@ GEM
       validate_url
       webfinger (~> 2.0)
     orm_adapter (0.5.0)
+    overmind (2.5.1)
     parallel (1.24.0)
     parsby (1.1.1)
     parser (3.3.0.5)
@@ -909,6 +912,7 @@ DEPENDENCIES
   chartkick
   chunky_png
   clamav-client
+  csv
   daemons
   deep_cloneable
   delayed_cron_job
@@ -961,10 +965,12 @@ DEPENDENCIES
   memory_profiler
   mina
   mini_magick
+  mutex_m
   net-imap
   net-pop
   net-smtp
   openid_connect
+  overmind
   parsby
   pg
   phonelib
